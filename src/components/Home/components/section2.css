@@ -92,7 +92,7 @@
 
 .btn {
   padding: 0.5rem 3rem;
-  background-color: #ffae00;
+  background-color: var(--yellow-primary);
   font-family: Poppins;
   font-weight: 500;
   font-size: 1.25rem;
