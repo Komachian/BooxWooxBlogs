@@ -7,10 +7,19 @@
   font-family: Poppins;
   --new-blog-input-bg: #ececec;
   --new-blog-input-ft-size: 1.4375rem;
+  --new-blog-dialog-caption-ft-size: 1.25rem;
   --yellow-primary: #ffae00;
   --hover-color: #777;
   --error-color: #ee0000;
+  --padded-width: calc(1440px - 3rem);
 }
+@media screen and (max-width: 1100px) {
+  :root {
+    --new-blog-input-ft-size: 1rem;
+    --new-blog-dialog-caption-ft-size: 0.875rem;
+  }
+}
+
 body {
   font-family: Poppins;
   background-color: #f3f3f3;

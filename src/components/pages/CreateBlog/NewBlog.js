@@ -2,12 +2,24 @@ import React, { useState } from 'react'
 import { ReactComponent as ArrowLeft } from '../../../assets/arrow-left.svg'
 import { ReactComponent as UploadSym } from '../../../assets/upload-symbol.svg'
 import { ReactComponent as CloseIcon } from '../../../assets/close-icon.svg'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import './newBlog.css'
+import { Link } from 'react-router-dom'
 
 export default function NewBlog() {
   const [files, setFiles] = useState(undefined)
   const [fileDescription, setFileDescription] = useState('')
   const [error, setError] = useState('')
+  const [rawContent, setRawContent] = useState('')
+
+  function handleSubmitBlog() {
+    // API to be provided
+  }
+
+  function handleSaveDraftOfBlog() {
+    // API to be provided
+  }
 
   function validFormat(format) {
     return format.substr(0, 6) === 'image/'
@@ -20,7 +32,6 @@ export default function NewBlog() {
 
   function handleLocalUpload(fileList) {
     if (fileList.length <= 0) {
-      emptyFileList()
       return
     }
     if (!validFormat(fileList[0].type)) {
@@ -55,81 +66,116 @@ export default function NewBlog() {
   }
 
   return (
-    <div className='create-new-blog'>
-      <form>
-        <div className='create-new-blog__upper'>
-          <span className='create-new-blog__upper__left'>
-            <ArrowLeft className='create-new-blog__upper__left-svg' />
-            <span className='create-new-blog__upper__left-text'>
-              Create Blog
+    <div className='create-new-blog-container'>
+      <div className='create-new-blog'>
+        <form>
+          <div className='create-new-blog__upper'>
+            <span className='create-new-blog__upper__left'>
+              <Link to='/'>
+                <ArrowLeft className='create-new-blog__upper__left-svg' />
+              </Link>
+              <span className='create-new-blog__upper__left-text'>
+                Create Blog
+              </span>
             </span>
-          </span>
-          <div className='create-new-blog__upper__right__wrapper'>
-            <input
-              type='submit'
-              className='blog-btns create-new-blog__upper__right__btn_1'
-              value='Save As Draft'
-            />
-            <input
-              type='submit'
-              className='blog-btns btn create-new-blog__upper__right__btn_2'
-              value='Submit'
-            />
+            <div className='create-new-blog__upper__right__wrapper'>
+              <input
+                type='submit'
+                className='blog-btns create-new-blog__upper__right__btn_1'
+                value='Save As Draft'
+                onClick={handleSaveDraftOfBlog}
+              />
+              <input
+                type='submit'
+                className='blog-btns btn create-new-blog__upper__right__btn_2'
+                value='Submit'
+                onClick={handleSubmitBlog}
+              />
+            </div>
           </div>
-        </div>
-        <div className='create-new-blog__form'>
-          <input
-            type='text'
-            placeholder='Add blog title'
-            className='create-new-blog__form__input-text create-new-blog__form__title'
-            autoComplete='off'
-          />
-          <input
-            type='text'
-            placeholder='Add blog description'
-            className='create-new-blog__form__input-text create-new-blog__form__description'
-            autoComplete='off'
-          />
-          <div className='create-new-blog__form__input-upload__wrapper'>
-            <p className='create-new-blog__form__input-upload__caption'>
-              Add Featuring Image
-            </p>
+          <div className='create-new-blog__form'>
+            <input
+              type='text'
+              placeholder='Add blog title'
+              className='create-new-blog__form__input-text create-new-blog__form__title'
+              autoComplete='off'
+            />
+            <input
+              type='text'
+              placeholder='Add blog description'
+              className='create-new-blog__form__input-text create-new-blog__form__description'
+              autoComplete='off'
+            />
             <div
-              className='create-new-blog__form__input-upload__input_dialog'
+              className='create-new-blog__form__input-upload__wrapper'
               onDragEnter={dragEnter}
               onDragOver={dragOver}
               onDragLeave={dragLeave}
               onDrop={fileDrop}
             >
-              <div>
-                <UploadSym />
-                <p className='dialog__caption'>Drag and drop image here</p>
-                <label className='btn create-new-blog__form__input-upload__input'>
-                  <input
-                    type='file'
-                    id='fileInput'
-                    name='fileInput'
-                    files={files}
-                    onChange={handleNewUpload}
-                  />
-                  Choose a file
-                </label>
-                {files && (
-                  <div className='prompt create-new-blog__input-value'>
-                    <p>{fileDescription}</p>
-                    <CloseIcon onClick={emptyFileList} />
-                  </div>
-                )}
-                {error !== '' && <p className='prompt upload-error'>{error}</p>}
+              {(!files || !files.length) && (
+                <p className='create-new-blog__form__input-upload__caption'>
+                  Add Featuring Image
+                </p>
+              )}
+              <div className='create-new-blog__form__input-upload__input_dialog'>
+                <div>
+                  {files && files.length && (
+                    <div className='preview-image-wrapper'>
+                      <p>Preview</p>
+                      <div
+                        style={{
+                          backgroundImage: `url(${URL.createObjectURL(
+                            files[0]
+                          )})`,
+                        }}
+                        className='preview-image'
+                      ></div>
+                    </div>
+                  )}
+                  <UploadSym />
+                  <p className='dialog__caption'>Drag and drop image here</p>
+                  <label className='btn create-new-blog__form__input-upload__input'>
+                    <input
+                      type='file'
+                      id='fileInput'
+                      name='fileInput'
+                      files={files}
+                      onChange={handleNewUpload}
+                    />
+                    Choose a file
+                  </label>
+                  {files && (
+                    <div className='prompt create-new-blog__input-value'>
+                      <p>{fileDescription}</p>
+                      <CloseIcon onClick={emptyFileList} />
+                    </div>
+                  )}
+                  {error !== '' && (
+                    <p className='prompt upload-error'>{error}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className='create-new-blog__blog-content__wrapper'>
+              <textarea
+                name='blog-content'
+                placeholder='Add Blog Content'
+                className='create-new-blog__form__input-text create-new-blog__form__textarea'
+                value={rawContent}
+                onChange={(e) => {
+                  setRawContent(e.target.value)
+                }}
+              ></textarea>
+              <div className='create-new-blog__blog-content__markdown'>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                  {rawContent}
+                </ReactMarkdown>
               </div>
             </div>
           </div>
-          <textarea
-            name='blog-content'
-            className='create-new-blog__form__input-text create-new-blog__form__textarea'
-          ></textarea>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   )
 }
