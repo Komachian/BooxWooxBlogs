@@ -59,6 +59,20 @@ export default function NewBlog() {
     handleLocalUpload(fileList)
   }
 
+  function textAreaFileDrop(e) {
+    e.preventDefault()
+    const fileList = e.dataTransfer.files
+    if (fileList.length <= 0 || !validFormat(fileList[0].type)) {
+      return
+    }
+
+    setRawContent(
+      rawContent +
+        '\n' +
+        `![${fileList[0].name}](${URL.createObjectURL(fileList[0])})\n\n`
+    )
+  }
+
   function handleNewUpload(e) {
     e.preventDefault()
     const fileList = e.target.files
@@ -166,6 +180,10 @@ export default function NewBlog() {
                 onChange={(e) => {
                   setRawContent(e.target.value)
                 }}
+                onDragEnter={dragEnter}
+                onDragOver={dragOver}
+                onDragLeave={dragLeave}
+                onDrop={textAreaFileDrop}
               ></textarea>
               <div className='create-new-blog__blog-content__markdown'>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>

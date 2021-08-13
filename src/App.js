@@ -4,6 +4,7 @@ import Navbar from './components/Global/nav'
 import Footer from './components/Global/Footer'
 import Home from './components/Home/index'
 import BlogsPage from './components/pages/blogs'
+import NewBlog from './components/pages/CreateBlog/NewBlog'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/blogs' component={BlogsPage} />
+        <Route path='/create-blog' component={NewBlog} />
       </Switch>
       <Footer />
     </Router>

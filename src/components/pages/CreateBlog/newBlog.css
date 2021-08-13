@@ -174,14 +174,17 @@
   height: 100vh;
   padding: 1.5rem 1.5rem;
   margin-right: 1rem;
-  flex: 1;
+  flex: 1 0 50%;
 }
 
 .create-new-blog__blog-content__markdown {
-  flex: 1;
+  flex: 1 0 50%;
   border-radius: 1.25rem;
   padding: 1.5rem 1.5rem;
   background-color: var(--new-blog-input-bg);
+}
+.create-new-blog__blog-content__markdown img {
+  width: 80%;
 }
 
 .preview-image-wrapper {
