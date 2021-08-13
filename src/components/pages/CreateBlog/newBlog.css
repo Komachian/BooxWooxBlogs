@@ -30,8 +30,10 @@
 
 .create-new-blog__upper__left-svg {
   margin-right: 1rem;
+  vertical-align: middle;
 }
 .create-new-blog__upper__left-text {
+  vertical-align: middle;
   font-size: var(--new-blog-input-ft-size);
   line-height: 2.25rem;
   font-weight: 600;
