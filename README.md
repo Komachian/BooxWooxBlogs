@@ -1,9 +1,21 @@
 # BooxWoox Blogs
 
 ## Issues
-1. 'Sort-by' dropdown menu auto-close functionality (on clicking outside the menu) hasn't been included
 
 ## Updates
+- 12 August, 2021
+    - Code refined
+
+- 10 August, 2021
+    - Home page enhanced
+    - Footer added
+    - Issues resolved
+    - Miscellaneous enhancements
+
+- 9 August, 2021
+    - Pagination Implemented
+    - Website made responsive
+
 - 2 August, 2021
     - Blogs page created
 

@@ -1,7 +1,6 @@
 .create-blog-box {
   display: flex;
   flex-direction: column;
-  /* height: 227px; */
   padding: 2rem 5.75rem;
   align-items: center;
   justify-content: center;
@@ -9,6 +8,12 @@
   background-color: #ffffff;
   box-shadow: 0 0 5px 5px #ffffff;
   opacity: 80%;
+  animation-name: create-blog-box;
+  animation-duration: 2s;
+}
+
+@keyframes create-blog-box {
+  0% {opacity: 0%; transform: translateX(-100px);}
 }
 
 .lines {
@@ -32,8 +37,13 @@
 }
 
 #line-3 {
+  text-decoration: none;
+}
+
+#line-3-btn {
   font-family: Poppins, sans-serif;
   background-color: #ffae00;
+  color: #000000;
   border-radius: 17px;
   line-height: 30px;
   font-size: 20px;
@@ -47,13 +57,13 @@
   margin-top: 20px;
 }
 
-#link {
-  text-decoration: none;
-  color: #000000;
+#line-3-btn:hover {
+  color: seashell;
+  transition: 0.5s;
 }
 
-#line-3:hover {
-  color: seashell;
+#line-3-btn:active {
+  transform: translateY(4px);
   transition: 0.5s;
 }
 

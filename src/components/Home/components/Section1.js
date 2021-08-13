@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Carousel from '../../../components/Global/Carousel'
 import CreateBlogBox from './createBlogBox'
 import { data as CarouselContent } from './CarouselContent'

@@ -6,6 +6,12 @@
   margin-left: 20px;
 }
 
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 11;
+}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -16,7 +22,6 @@
   background-color: #fff;
   opacity: 80%;
   align-items: center;
-  z-index: 11;
 }
 
 .nav-row {
@@ -47,6 +52,8 @@
 }
 
 .side-menu-container {
+  position: sticky;
+  top: 0;
   text-align: center;
   z-index: 11;
   height: 180px;
@@ -74,6 +81,12 @@
   margin-top: -0.2px;
   transition: 0.4s;
   box-shadow: 0 4px 2px 2px #555;
+  animation-name: side-menu-active;
+  animation-duration: 1s;
+}
+
+@keyframes side-menu-active {
+  0% {opacity: 0%;}
 }
 
 .nav-link-side {
@@ -146,260 +159,3 @@
   color: #000000;
   font-weight: 600;
 }
-
-/* .navbar {
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(255, 255, 255, 0.2);
-    height: 55px;
-    align-content: center;
-}
-
-.nav-row {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    background-color: royalblue;
-    align-content: center;
-    right: 0px;
-    height: 55px;
-}
-
-.menu-bar-icon {
-    display: none;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-    .nav-row{
-        display: none;
-    }
-    .menu-bar-icon {
-        display: block;
-        position: absolute;
-        color: #313131;
-        align-self:baseline;
-        font-size: 43px;
-        right: 10px;
-        float: right;
-    }
-
-}
-
-.nav-link {
-    text-decoration: none;
-}
-
-.nav-link:hover {
-    color: cornsilk;
-}
-
-#feat {
-    position: absolute; */
-/* width: 87px;
-    height: 30px; */
-/* left: 0px; */
-/* top: 0px; */
-/* font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    color: #313131;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-#blog {
-    position: absolute;
-    width: 56px;
-    height: 30px; */
-/* left: 131px; */
-/* top: 0px; */
-/* font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #000000;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-} */
-
-/* #down {
-    position: absolute;
-    width: 112px;
-    height: 30px; */
-/* left: 231px; */
-/* top: 0px; */
-/* font-family: Poppins;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    color: #313131;
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-    margin: 0px 44px;
-} */
-
-/* #log {
-    position: relative;
-    width: 145px;
-    height: 43px;
-    left: 1222px;
-    top: 13px;
-    
-    align-content: center;
-} */
-/* 
-#log-text {
-    position: absolute; */
-/* width: 145px;
-    height: 43px;
-    right: 10px; */
-/* top: 13px; */
-/* width: 55px;
-    height: 30px;
-    left: 1267px;
-    top: 20px; */
-/* height: 30px;
-    margin-top: 6px;
-    align-content: center;
-    text-justify: inter-word;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 30px;
-    color: #000000;
-    background: #FFAE00;
-    border-radius: 30.5px;
-    order: 3;
-} */
-
-/* .side-menu {
-    display: none;
-}
-
-.side-menu-active {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(148, 75, 75);
-    list-style-type: none;
-}
-
-.nav-link-side {
-    text-decoration: none;
-    color: cornsilk;
-    font-family: Poppins;
-} */
-
-/* #logo {
-    /* horizontal 1 */
-/* 
-position: absolute;
-left: 0%;
-right: 0%;
-top: 0%;
-bottom: 0%;
-
-}
-
-#feat {
-    /* Features */
-
-/* position: static;
-width: 87px;
-height: 30px;
-left: 0px;
-top: 0px;
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-
-/* identical to box height */
-
-/* color: #313131; */
-
-/* Inside Auto Layout */
-/* flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px 44px;
-} */
-
-/* #blogs { */
-/* Blogs */
-
-/* position: static;
-width: 56px;
-height: 30px;
-left: 131px;
-top: 0px;
-
-font-family: Poppins;
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 30px; */
-
-/* identical to box height */
-
-/* color: #000000; */
-
-/* Inside Auto Layout */
-/* flex: none;
-order: 1;
-flex-grow: 0;
-margin: 0px 44px;
-} */
-
-/* #down { */
-/* Downloads */
-
-/* position: static;
-width: 112px;
-height: 30px;
-left: 231px;
-top: 0px;
-
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px; */
-
-/* identical to box height */
-
-/* color: #313131; */
-
-/* Inside Auto Layout */
-/* flex: none;
-order: 2;
-flex-grow: 0;
-margin: 0px 44px;
-} */
-
-/* #log { */
-/* Rectangle 149 */
-/* 
-position: absolute;
-width: 145px;
-height: 43px;
-left: 1222px;
-top: 13px;
-
-text-align: center;
-text-justify: auto;
-
-/* Theme 1 */
-/* background: #FFAE00;
-border-radius: 30.5px; 
-} */
