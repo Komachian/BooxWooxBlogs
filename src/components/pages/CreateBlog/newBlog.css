@@ -174,6 +174,7 @@
   height: 100vh;
   padding: 1.5rem 1.5rem;
   margin-right: 1rem;
+  margin-bottom: 0;
   flex: 1 0 50%;
 }
 
@@ -182,6 +183,8 @@
   border-radius: 1.25rem;
   padding: 1.5rem 1.5rem;
   background-color: var(--new-blog-input-bg);
+  overflow: auto;
+  height: 100vh;
 }
 .create-new-blog__blog-content__markdown img {
   width: 80%;
