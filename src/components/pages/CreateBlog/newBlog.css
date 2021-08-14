@@ -163,6 +163,20 @@
   color: var(--error-color);
 }
 
+.create-new-blog__blog-content__caption {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: Roboto;
+  font-weight: 500;
+}
+
+.create-new-blog__blog-content__caption a {
+  color: rgb(84, 84, 219);
+}
+.create-new-blog__blog-content__caption a:hover {
+  text-decoration: underline;
+}
+
 .create-new-blog__blog-content__wrapper {
   display: flex;
   justify-content: space-between;
@@ -183,11 +197,12 @@
   border-radius: 1.25rem;
   padding: 1.5rem 1.5rem;
   background-color: var(--new-blog-input-bg);
-  overflow: auto;
+  overflow-y: auto;
+  word-break: break-all;
   height: 100vh;
 }
 .create-new-blog__blog-content__markdown img {
-  width: 80%;
+  width: 100%;
 }
 
 .preview-image-wrapper {

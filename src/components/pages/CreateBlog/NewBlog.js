@@ -171,6 +171,18 @@ export default function NewBlog() {
                 </div>
               </div>
             </div>
+            <p className='create-new-blog__blog-content__caption'>
+              Our Editor supports Markdown! Learn more about it{' '}
+              <a
+                href='https://www.markdownguide.org/'
+                target='_blank'
+                rel='noreferrer'
+                className='basic-link'
+              >
+                here
+              </a>
+              .
+            </p>
             <div className='create-new-blog__blog-content__wrapper'>
               <textarea
                 name='blog-content'
@@ -185,11 +197,11 @@ export default function NewBlog() {
                 onDragLeave={dragLeave}
                 onDrop={textAreaFileDrop}
               ></textarea>
-              <div className='create-new-blog__blog-content__markdown'>
+              <p className='create-new-blog__blog-content__markdown'>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                   {rawContent}
                 </ReactMarkdown>
-              </div>
+              </p>
             </div>
           </div>
         </form>
