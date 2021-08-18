@@ -1,8 +1,13 @@
 # BooxWoox Blogs
 
 ## Issues
+- Count-down timer has issues
+- Dial code dropdown yet to be added
 
 ## Updates
+- 18 August, 2021
+    - Miscellaneous frames created
+
 - 12 August, 2021
     - Code refined
 

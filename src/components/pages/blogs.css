@@ -41,24 +41,24 @@
     100% {opacity: 100%;}
 }
 
-.icon {
+.bookmark-icon {
   height: 100%;
   width: auto;
   top: 0px;
   z-index: 11;
 }
 
-.icon:hover {
+.bookmark-icon:hover {
   transform: translateY(-15px);
   transition: 0.5s;
 }
 
-.icon:active {
+.bookmark-icon:active {
   transform: translateY(4px);
   transition: 0.5s;
 }
 
-.icon-inactive {
+.bookmark-icon-inactive {
   display: none;
 }
 
@@ -365,6 +365,39 @@
   transition: 0.5s;
 }
 
+#subs {
+  z-index: 1;
+}
+
+.mail-input-label {
+  position: absolute;
+  top: 0.875rem;
+  left: -2rem;
+}
+
+.home__section2__subscribe__form__input {
+  width: 100%;
+  margin-bottom: 2rem;
+  border: 2px solid #7b7b7b;
+  font-size: 1.125rem;
+  border-radius: 7px;
+  padding: 1rem 2rem 1rem 4rem;
+  left: -2rem;
+  outline: none;
+}
+
+.btn {
+  padding: 0.5rem 3rem;
+  background-color: #ffae00;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all ease 0.25s;
+}
+
 #category-head {
     margin-bottom: 6px;
     font-weight: bolder;
@@ -413,7 +446,7 @@
 }
 
 #sort-direction {
-  scale: 0.7;
+  scale: 0.6;
   position: absolute;
   left: 85%;
   top: 120px;
@@ -426,7 +459,7 @@
   #sort-direction {
     left: 95%;
   }
-  .icon{
+  .bookmark-icon{
       height: 35px;
   }
 }
@@ -570,7 +603,7 @@
     font-size: 13px;
     right: 10%;
   }
-  .icon {
+  .bookmark-icon {
     position: relative;
     width: 28px;
     height: 35px;
@@ -587,7 +620,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .icon {
+  .bookmark-icon {
     left: 300%;
     height: 38px;
   }

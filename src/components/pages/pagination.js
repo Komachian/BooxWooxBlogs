@@ -13,7 +13,7 @@ function Blog(blog) {
         <img
           src={icon}
           alt="bookmark-icon"
-          className={blog.bookmarked ? "icon" : "icon-inactive"}
+          className={blog.bookmarked ? "bookmark-icon" : "bookmark-icon-inactive"}
         />
       </div>
       <div className="heading">

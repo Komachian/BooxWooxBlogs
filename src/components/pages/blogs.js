@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./blogs.css";
+// import mailSymb from '../../../assets/mail-input-logo.svg'
 import Pagination from "./pagination";
 
 function BlogsPage() {
@@ -12,9 +13,15 @@ function BlogsPage() {
   const [sortAscending, setSortAscending] = useState(true);
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [categoryMenu, setCategoryMenu] = useState(false);
+  const [email, setEmail] = useState('')
 
   const showDropdownMenu = () => setDropdownMenu((prevState) => !prevState);
   const showCategoryMenu = () => setCategoryMenu((prevState) => !prevState);
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    setEmail('')
+  }
 
   return (
     <div>
