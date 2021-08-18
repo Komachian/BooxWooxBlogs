@@ -1,10 +1,23 @@
 # BooxWoox Blogs
 
+
+## To-do
+- make create-blog a private route
+- contexts for user
 ## Issues
 
 ## Updates
+- 14 August, 2021
+    - updated footer styles
+  
+- 13 August, 2021
+    - implemented drag-drop of images inside content
+
 - 12 August, 2021
     - Code refined
+
+- 11 August, 2021
+    - made create blog page
 
 - 10 August, 2021
     - Home page enhanced
