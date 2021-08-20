@@ -8,6 +8,7 @@ import x from '../../assets/x.svg'
 import backArrow from '../../assets/back-arrow.svg'
 import verticalLine from '../../assets/|.svg'
 import { Link } from "react-router-dom";
+import { DragHandleOutlined } from "@material-ui/icons";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -27,6 +28,7 @@ function Navbar() {
   const [showOverlay, setShowOverlay] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [showOTP, setShowOTP] = useState(false);
+  const [showCodesList, setShowCodesList] = useState(false);
 
 
   const [showError,setShowError] = useState(false);
@@ -38,10 +40,11 @@ function Navbar() {
       setShowError(true);
     }
     else {
-      setPN("+91" + document.getElementById("input-pn").value);
+      setPN(dialCode + document.getElementById("input-pn").value);
       console.log(pn);
       setShowLogin(false);
       setShowOTP(true);
+      setShowError(false);
     }
   }
 
@@ -53,19 +56,13 @@ function Navbar() {
       setOtp(document.getElementById("dig1").value + document.getElementById("dig2").value + document.getElementById("dig3").value + document.getElementById("dig4").value);
       console.log(otp);
       console.log(pn);
+      setShowOTPError(false);
     }
   }
 
   const [otp,setOtp] = useState('');
   const [pn,setPN] = useState('');
-
-  function handleChange(otp) {
-      setOtp(otp);
-  }
-
   const [time, setTime] = useState(120);
-
-  
 
   function counter(id) {
     var timer = document.getElementById("time-left").innerText;
@@ -100,6 +97,24 @@ function Navbar() {
     }
     return () => {clearInterval(timerID)};
   }, [])
+
+  function handleIt(item) {
+    setDialCode(item.code);
+    setShowCodesList(false);
+  }
+
+  function CodeList() {
+    var itemHolder = [];
+    dialCodes.map((item) =>
+      itemHolder.push(
+        <div id="code-item" onClick={() => {handleIt(item)}}>
+          {item.code} {item.country}
+        </div>
+      )
+    );
+  
+    return <div id={showCodesList ? "codes-list" : "codes-list-inactive"}>{itemHolder}</div>;
+  }
 
   return (
     <div>
@@ -177,14 +192,13 @@ function Navbar() {
       <div className="overlay-box" id={(showLogin && showOverlay) ? "log-sign-box" : "log-sign-box-inactive"} >
         <div id="log-sign">
           Login/Signup
-          <img onClick={() => {setShowLogin(false); setShowOverlay(false)}} id="x" src={x} />
+          <img onClick={() => {setShowOverlay(false); setShowError(false)}} id="x" src={x} />
         </div>
         <div id="enter-your-pn">Enter your phone number</div>
         <div id="number-box">
-          <div id="local-code">
-            <div id="text">{dialCode}
-            </div>
-            <img id="chevron-down" src={chevronDown} />
+          <div id="local-code" onClick={() => setShowCodesList(!showCodesList)}>
+            <div id="text">{dialCode}</div>
+            <img id={showCodesList ? "chevron-up" : "chevron-down"} src={chevronDown} />
             <img id="vertical-line" src={verticalLine} />
           </div>
           <input
@@ -194,6 +208,7 @@ function Navbar() {
             placeholder="* * * * * * * * * *"
           />
         </div>
+        <CodeList />
         <div id={showError ? "error-message" : "error-message-inactive"}>*The entered phone number must nescessarily have 10 digits</div>
         <div id="sendotp-btn"  onClick={handleLogin}><div>Send OTP</div></div>
       </div>

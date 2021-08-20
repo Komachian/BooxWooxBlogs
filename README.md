@@ -1,8 +1,9 @@
 # BooxWoox Blogs
 
 ## Issues
-- Dial code dropdown yet to be added
+- Navbar has positioning issues
 - API not implemented
+- OTP countdown starts before frame is rendered
 
 ## Updates
 - 20 August, 2021
