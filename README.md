@@ -1,10 +1,13 @@
 # BooxWoox Blogs
 
 ## Issues
-- Count-down timer has issues
 - Dial code dropdown yet to be added
+- API not implemented
 
 ## Updates
+- 20 August, 2021
+    - Login Flow Created
+
 - 18 August, 2021
     - Miscellaneous frames created
 
