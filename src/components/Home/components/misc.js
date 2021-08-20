@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OtpInput from 'react-otp-input';
 // import ReactScrollableList from 'react-scrollable-list'
+import dialCodes from "./dial-codes";
 import chevronDown from '../../../assets/chevron-down.svg'
 import x from '../../../assets/x.svg'
 import backArrow from '../../../assets/back-arrow.svg'
@@ -11,45 +12,74 @@ import pen from '../../../assets/pen.svg'
 import drafts from '../../../assets/drafts.svg'
 import logout from '../../../assets/logout.svg'
 import "./misc.css";
-import { getElementError } from "@testing-library/react";
 
-function Misc() {
-    const [otp,setOtp] = useState('');
-    function handleChange(otp) {
-        setOtp(otp);
+
+function Login() {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
+  const [showOTP, setShowOTP] = useState(false);
+
+
+  const [showError,setShowError] = useState(false);
+  const [dialCode, setDialCode] = useState("+91");
+
+  function handleLogin() {
+    if(document.getElementById("input-pn").value.length < 10) {
+      setShowError(true);
+    }
+    else {
+      setShowLogin(false);
+      setShowOTP(true);
+    }
+  }
+
+  const [otp,setOtp] = useState('');
+
+  function handleChange(otp) {
+      setOtp(otp);
+  }
+
+  const [time, setTime] = useState(120);
+
+  
+
+  function counter(id) {
+    var timer = document.getElementById("time-left").innerText;
+    timer = timer.split(':');
+    var minutes = timer[0];
+    var seconds = timer[1];
+    if (minutes == 0 && seconds == 0) {
+      setTime(0);
+      document.getElementById("time-left").innerText = ('0' + ':' + '00');
+      clearInterval(id);
+      return;
+    }
+    else if (seconds <= 10 && seconds > 0) {
+      seconds = '0' + --seconds;
+    }
+    else if(seconds == 0) {
+      minutes--;
+      seconds = 59;
+    }
+    else {
+      seconds--;
     }
 
-    const [time, setTime] = useState(120);
+    document.getElementById("time-left").innerText = (minutes + ':' + seconds);
+    setTime((minutes * 60) + seconds);
+  };
+
+  useEffect(() => {
     var timerID = setInterval(counter, 1000);
-    function counter() {
-      var timer = document.getElementById("time-left").innerText;
-      timer = timer.split(':');
-      var minutes = timer[0];
-      var seconds = timer[1];
-      seconds -= 1;
-      if (minutes < 0) return;
-      else if (seconds < 0 && minutes != 0) {
-          minutes -= 1;
-          seconds = 59;
-      }
-      else if (seconds < 10 && seconds.length != 2) {
-        seconds = '0' + seconds;
-      }
-
-      document.getElementById("time-left").innerText = (minutes + ':' + seconds);
-      setTime((minutes * 60) + seconds);
-
-      if (minutes == 0 && seconds == 0) {
-        setTime(0);
-        document.getElementById("time-left").innerText = ('0' + ':' + '00');
-        clearInterval(timerID);
-      }
-      console.log(time);
-    };
-
-  return (
-    <div>
-      <div id="log-sign-box">
+    if(time == 0) {
+      clearInterval(timerID);
+    }
+    return () => {clearInterval(timerID)};
+  }, [])
+ 
+   return (
+     <div id={showOverlay ? "overlay" : "overlay-inactive"}>
+      <div className="overlay-box" id={showLogin ? "log-sign-box" : "log-sign-box-inactive"} >
         <div id="log-sign">
           Login/Signup
           <img id="x" src={x} />
@@ -57,7 +87,8 @@ function Misc() {
         <div id="enter-your-pn">Enter your phone number</div>
         <div id="number-box">
           <div id="local-code">
-            <div id="text">+91</div>
+            <div id="text">{dialCode}
+            </div>
             <img id="chevron-down" src={chevronDown} />
             <img id="vertical-line" src={verticalLine} />
           </div>
@@ -68,10 +99,11 @@ function Misc() {
             placeholder="* * * * * * * * * *"
           />
         </div>
-        <div id="sendotp-btn"><div>Send OTP</div></div>
+        <div id={showError ? "error-message" : "error-message-inactive"}>*The entered phone number must nescessarily have 10 digits</div>
+        <div id="sendotp-btn"  onClick={handleLogin}><div>Send OTP</div></div>
       </div>
 
-      <div id="log-sign-box">
+      <div className="overlay-box" id={showOTP ? "otp-box" : "otp-box-inactive"}>
         <div id="log-sign">
           <img id="back-arrow" src={backArrow} />
           Login/Signup
@@ -86,41 +118,29 @@ function Misc() {
           <input id="input-digit" type="number" maxlength="1" />
           <input id="input-digit" type="number" maxlength="1" />
         </div>
-        <div id={time != 0 ? "resend" : "resend-inactive"}>Resend in <div id="time-left">0:10</div></div>
+        <div id={time != 0 ? "resend" : "resend-inactive"}>Resend in <div id="time-left">2:00</div></div>
         <div id={time == 0 ? "resend-otp" : "resend-inactive"}>Resend OTP</div>
         <div id="login-btn"><div>Login</div></div>
-        {/* <OtpInput
-          value={otp}
-          onChange={handleChange}
-          numInputs={4}
-          isInputNum={true}
-        />
-        <div id="sendotp-btn">Login</div>
-        <ReactScrollableList
-  listItems=[{ id: 'us', content: 'USA' }, {
-  id: 'IN',
-  content: 'India'
-}]
-  heightOfItem={30}
-  maxItemsToRender={50}
-  style={{ color: '#333' }}
-/> */}
+        
         <div id="tnc">
           By continuing, you agree to BooxWoox's Terms of Use and Privacy
           Policy
         </div>
       </div>
-
-      <div className="dialog-box" id="comments-box">
-        <h1>Comments</h1>
-        <div id="comment-prompt">
-          Do you want people to comment on your blogs?
-        </div>
-        <div class="toggle" id="yes-no">
-          <div id="no"><div>No</div></div>
-          <div id="yes"><div>Yes</div></div>
-        </div>
       </div>
+   )
+}
+
+function Misc() {
+   
+  
+
+
+
+  return (
+    <div>
+      
+
 
       <div className="dialog-box" id="submit-box">
         <div id="submit-prompt">Are you sure you want to submit your blog?</div>
@@ -145,14 +165,18 @@ function Misc() {
         </div>
       </div>
 
-      <div id="menu">
-        <div class="menu-item"> <img src={user} class="icon"/>My Account</div>
-        <div class="menu-item"> <img src={pen} class="icon"/>My Blogs</div>
-        <div class="menu-item"> <img src={drafts} class="icon"/>My Drafts</div>
-        <div class="menu-item"> <img src={logout} class="icon"/>Logout</div>
+      <div className="dialog-box" id="comments-box">
+        <h1>Comments</h1>
+        <div id="comment-prompt">
+          Do you want people to comment on your blogs?
         </div>
+        <div class="toggle" id="yes-no">
+          <div id="no"><div>No</div></div>
+          <div id="yes"><div>Yes</div></div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Misc;
+export default Login;

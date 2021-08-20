@@ -53,7 +53,7 @@ function Blog(blog) {
 const blogsPerPage = 10;
 let arrayForHoldingBlogs = [];
 
-const Blogs = ({ blogs, loading }) => {
+const Blogs = ({ blogs, loading, error }) => {
   if (loading) {
     return (
       <div id="load-ani">
@@ -64,6 +64,13 @@ const Blogs = ({ blogs, loading }) => {
         width={100}
         timeout={5000}
       />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div id="load-ani">
+        Oops! There seems to be an error.<br/>Please try again.
       </div>
     );
   }
@@ -78,7 +85,7 @@ const Blogs = ({ blogs, loading }) => {
         likes="24"
         pic="{blogs[i].pic}"
         heading={blog.title}
-        content={blog.body}
+        content={blog.description}
         author="Xaviers"
         tags="Horror,timepass"
         time="2 min"
@@ -93,16 +100,14 @@ const Blogs = ({ blogs, loading }) => {
 function Pagination() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [blogsToShow, setBlogsToShow] = useState([]);
   const [next, setNext] = useState(0);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
-      const resp = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      ).catch(error => console.log("Error! " + error));
-      setBlogs(resp.data);
+      await axios.get("https://og4xo5agm5.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog").then(res => console.log(res)).catch(error => {console.log("Error! " + error); setError(true)});
       setLoading(false);
     };
 
@@ -129,9 +134,9 @@ function Pagination() {
 
   return (
     <div>
-      <Blogs blogs={blogsToShow} loading={loading} />
+      <Blogs blogs={blogsToShow} loading={loading} error={error} />
       <div
-        id={next >= 100 || loading ? "load-inactive" : "load-up"}
+        id={next >= 100 || (loading || error) ? "load-inactive" : "load-up"}
         onClick={handleShowMoreBlogs}
       >
         <a id="load">Load more</a>

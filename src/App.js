@@ -6,6 +6,8 @@ import Home from "./components/Home/index";
 import BlogsPage from "./components/pages/blogs";
 import Misc from "./components/Home/components/misc";
 
+
+
 function App() {
   return (
     <Router>

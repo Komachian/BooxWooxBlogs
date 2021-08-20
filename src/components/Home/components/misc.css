@@ -1,4 +1,7 @@
-#log-sign-box {
+.overlay-box {
+  position: relative;
+  align-self: center;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -9,6 +12,17 @@
   border-radius: 23px;
   margin-top: 40px;
   margin-left: 20px;
+  opacity: 100%;
+  left: 30%;
+  top: 10%;
+}
+
+#log-sign-box-inactive {
+  display: none;
+}
+
+#otp-box-inactive {
+  display: none;
 }
 
 #log-sign {
@@ -115,7 +129,7 @@ h1 {
 
 #vertical-line {
     position: relative;
-    top: 6px;
+    top: 7px;
   height: 33px;
   margin-left: 8px;
   margin-right: 12px;
@@ -135,6 +149,19 @@ h1 {
   border-radius: 3px;
   cursor: pointer;
   margin-left: 5px;
+}
+
+#error-message {
+  position: relative;
+  z-index: 10;
+  font-size: 8px;
+  bottom: 20px;
+  right: 50px;
+  color: rgb(201, 24, 24);
+}
+
+#error-message-inactive {
+  display: none;
 }
 
 #input-pn:focus {
@@ -206,7 +233,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-#input-digit {
+.input-digit {
   border: none;
   height: 46px;
   width: 58px;
@@ -463,4 +490,17 @@ h1 {
     margin-right: 10px;
     height: 20px;
     width: 20px;
+}
+
+
+
+
+
+#block {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 20;
+  background-color: rgb(92, 88, 88);
+  opacity: 80%;
 }

@@ -9,7 +9,7 @@
 .nav-container {
   position: sticky;
   top: 0;
-  z-index: 11;
+  z-index: 15;
 }
 
 .navbar {
@@ -158,4 +158,13 @@
 #blog-side {
   color: #000000;
   font-weight: 600;
+}
+
+#overlay {
+  position: fixed;
+  z-index: 14;
+  background-color: black;
+  opacity: 80%;
+  height: 100%;
+  width: 100%;
 }
