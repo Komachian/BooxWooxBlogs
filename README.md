@@ -4,6 +4,7 @@
 - Navbar has positioning issues
 - API not implemented
 - OTP countdown starts before frame is rendered
+- Dial-codes list scroll is fidgety at times
 
 ## Updates
 - 20 August, 2021

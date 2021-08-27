@@ -51,6 +51,54 @@ export const dialCodes  = [
         code: "+27",
         country: "South Africa",
       },
+      {
+        code: "+45",
+        country: "Denmark",
+      },
+      {
+        code: "+30",
+        country: "Greece",
+      },
+      {
+        code: "+90",
+        country: "Turkey",
+      },
+      {
+        code: "+852",
+        country: "Hong Kong",
+      },
+      {
+        code: "+86",
+        country: "China",
+      },
+      {
+        code: "+880",
+        country: "Bangladesh",
+      },
+      {
+        code: "+977",
+        country: "Nepal",
+      },
+      {
+        code: "+64",
+        country: "New Zealand",
+      },
+      {
+        code: "+62",
+        country: "Indonesia",
+      },
+      {
+        code: "+60",
+        country: "Malaysia",
+      },
+      {
+        code: "+65",
+        country: "Singapore",
+      },
+      {
+        code: "+92",
+        country: "Pakistan",
+      },
   ]
 
 export default dialCodes;
