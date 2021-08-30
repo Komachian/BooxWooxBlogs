@@ -38,7 +38,7 @@ function Navbar() {
   window.addEventListener("resize", checkSideMenuSize);
   window.addEventListener("scroll", closeSideMenu)
 
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
   // const [showLogin, setShowLogin] = useState(true);
   // const [showOTP, setShowOTP] = useState(false);
   // const [showCodesList, setShowCodesList] = useState(false);

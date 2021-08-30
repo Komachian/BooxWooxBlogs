@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./blogs.css";
-// import mailSymb from '../../../assets/mail-input-logo.svg'
+import mailSymb from '../../assets/mail-logo.svg'
 import Pagination from "./pagination";
 
 function BlogsPage() {
@@ -18,7 +18,7 @@ function BlogsPage() {
   const showDropdownMenu = () => setDropdownMenu((prevState) => !prevState);
   const showCategoryMenu = () => setCategoryMenu((prevState) => !prevState);
 
-  function handleSubmit(e) {
+  function handleEmail(e) {
     e.preventDefault()
     setEmail('')
   }
@@ -276,6 +276,26 @@ function BlogsPage() {
               </Link>
             </ul>
           </div>
+
+          <form id="subscribe-form">
+              <label htmlFor='email-id' id='mail-label'>
+                <img src={mailSymb} alt='mail-symbol' />
+              </label>
+              <input
+                name='email-id'
+                id='input-email-id'
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
+                placeholder='Enter your email ID'
+                pattern='[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+'
+              />
+              <button type='submit' id="subscribe-btn" onClick={handleEmail}>
+                Subscribe
+              </button>
+            </form>
+
         </div>
       </div>
     </div>

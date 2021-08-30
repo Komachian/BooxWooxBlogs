@@ -1,10 +1,14 @@
 # BooxWoox Blogs
 
 ## Issues
-- Navbar has positioning issues
-- API not implemented
+- Navbar has ceased to be sticky
+- API returns CORS error
 - OTP countdown starts before frame is rendered
-- Dial-codes list scroll is fidgety at times
+- Dial-codes list scroll needs improvement
+- Side menu of blogs page not fixed
+- OTP input auto focus shifting not implemented
+- Overlay onBlur() not working as expected
+- Character inputs are not rejected in phone-number / OTP box
 
 ## Updates
 - 20 August, 2021

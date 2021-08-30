@@ -28,11 +28,11 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
     }
     else {
       setPN(dialCode + document.getElementById("input-pn").value);
-    //   axios({
-    //     method: 'post',
-    //     url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
-    //     data: { "phone":{pn}}
-    //   }).then(response => setOTPToken(response.token)).catch(err => err);
+      axios({
+        method: 'post',
+        url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
+        data: { "phone":{pn}}
+      }).then(response => setOTPToken(response.token)).catch(err => err);
       console.log(pn);
       document.getElementById("time-left").innerText = ('2' + ':' + '00');
       setShowLogin(false);
@@ -100,6 +100,24 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
   //   return () => {clearInterval(timerID)};
   // }, [])
 
+  // var container = document.getElementById("input-otp")[0];
+  // container.onkeyup = function(e) {
+  //     var target = e.srcElement;
+  //     var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+  //     var myLength = target.value.length;
+  //     if (myLength >= maxLength) {
+  //         var next = target;
+  //         while (next = next.nextElementSibling) {
+  //             if (next == null)
+  //                 break;
+  //             if (next.tagName.toLowerCase() == "input") {
+  //                 next.focus();
+  //                 break;
+  //             }
+  //         }
+  //     }
+  // }
+
   function handleIt(item) {
     setDialCode(item.code);
     setShowCodesList(false);
@@ -121,8 +139,7 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
     if(!showOverlay) return null;
     return (
         <div>
-            <>
-                <div id="overlay">
+                <div id="overlay" onBlur={() => setShowOverlay(false)} tabIndex='1'>
                 </div>
       <div className="overlay-box" id={(showLogin && showOverlay) ? "log-sign-box" : "log-sign-box-inactive"}>
         <div id="log-sign">
@@ -156,7 +173,7 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
         </div>
         <div id="enter-your-otp">Please enter the 4-digit OTP</div>
         <div id="your-pn">
-          Sent on your phone number <div id="pn">xxxxxx7654</div>
+          Sent on your phone number <div id="pn">xxxxxx{pn.substr(10, 4)}</div>
         </div>
         <div id="input-otp">
           <input id="dig1" className="input-digit" type="number" maxlength="1" />
@@ -174,7 +191,6 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
           Policy
         </div>
       </div>
-      </>
         </div>
     )
 }

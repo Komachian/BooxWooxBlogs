@@ -99,6 +99,18 @@ export const dialCodes  = [
         code: "+92",
         country: "Pakistan",
       },
+      {
+        code: "+975",
+        country: "Bhutan",
+      },
+      {
+        code: "+95",
+        country: "Myanmar",
+      },
+      {
+        code: "+93",
+        country: "Afghanistan",
+      },
   ]
 
 export default dialCodes;

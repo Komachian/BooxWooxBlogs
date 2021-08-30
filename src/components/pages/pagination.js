@@ -107,7 +107,7 @@ function Pagination() {
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
-      await axios.get("https://og4xo5agm5.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog").then(res => console.log(res)).catch(error => {console.log("Error! " + error); setError(true)});
+      await axios.get("https://azz75mvkyi.execute-api.ap-south-1.amazonaws.com/Prod/readBlog").then(res => console.log(res)).catch(error => {console.log("Error! " + error); setError(true)});
       setLoading(false);
     };
 
