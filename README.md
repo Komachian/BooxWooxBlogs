@@ -8,7 +8,7 @@
 - Side menu of blogs page not fixed
 - Overlay onBlur() not working as expected
 - Character inputs are not rejected in phone-number / OTP box
-- Duplicate blogs are displayed
+- *Duplicate blogs are displayed*
 
 ## Updates
 - 20 August, 2021

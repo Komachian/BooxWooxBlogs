@@ -39,108 +39,8 @@ function Navbar() {
   window.addEventListener("scroll", closeSideMenu)
 
   const [showOverlay, setShowOverlay] = useState(false);
-  // const [showLogin, setShowLogin] = useState(true);
-  // const [showOTP, setShowOTP] = useState(false);
-  // const [showCodesList, setShowCodesList] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showUserMenuSide, setShowUserMenuSide] = useState(false);
-
-
-  // const [showError,setShowError] = useState(false);
-  // const [showOTPError,setShowOTPError] = useState(false);
-  // const [dialCode, setDialCode] = useState("+91");
-
-  // function handleLogin() {
-  //   if(document.getElementById("input-pn").value.length < 10) {
-  //     setShowError(true);
-  //   }
-  //   else {
-  //     setPN(dialCode + document.getElementById("input-pn").value);
-  //     axios({
-  //       method: 'post',
-  //       url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
-  //       data: { "phone":{pn}}
-  //     }).then(response => setOTPToken(response.token)).catch(err => err);
-  //     console.log(pn);
-  //     setShowLogin(false);
-  //     setShowOTP(true);
-  //     setShowError(false);
-  //   }
-  // }
-
-  // function handleOTP() {
-  //   if(document.getElementById("dig1").value == '' || document.getElementById("dig2").value == '' || document.getElementById("dig3").value == '' || document.getElementById("dig4").value == '') {
-  //     setShowOTPError(true);
-  //   }
-  //   else {
-  //     setOtp(document.getElementById("dig1").value + document.getElementById("dig2").value + document.getElementById("dig3").value + document.getElementById("dig4").value);
-  //     console.log(otp);
-  //     console.log(pn);
-  //     axios({
-    //       method: 'post',
-    //       url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/verifyOtp',
-    //       data: { {"otp":{otp}}},
-    //       headers: {token: {OTPToken}}
-    //     }).then(response => setOTPToken(response.token)).catch(err => err);
-  //     setShowOTPError(false);
-  //   }
-  // }
-
-  // const [otp,setOtp] = useState('');
-  // const [pn,setPN] = useState('');
-  // const [time, setTime] = useState(120);
-
-  // function counter(id) {
-  //   var timer = document.getElementById("time-left").innerText;
-  //   timer = timer.split(':');
-  //   var minutes = timer[0];
-  //   var seconds = timer[1];
-  //   if (minutes == 0 && seconds == 0) {
-  //     setTime(0);
-  //     document.getElementById("time-left").innerText = ('0' + ':' + '00');
-  //     clearInterval(id);
-  //     return;
-  //   }
-  //   else if (seconds <= 10 && seconds > 0) {
-  //     seconds = '0' + --seconds;
-  //   }
-  //   else if(seconds == 0) {
-  //     minutes--;
-  //     seconds = 59;
-  //   }
-  //   else {
-  //     seconds--;
-  //   }
-
-  //   document.getElementById("time-left").innerText = (minutes + ':' + seconds);
-  //   setTime((minutes * 60) + seconds);
-  // };
-
-  // useEffect(() => {
-  //   var timerID = setInterval(counter, 1000);
-  //   if(time == 0) {
-  //     clearInterval(timerID);
-  //   }
-  //   return () => {clearInterval(timerID)};
-  // }, [])
-
-  // function handleIt(item) {
-  //   setDialCode(item.code);
-  //   setShowCodesList(false);
-  // }
-
-  // function CodeList() {
-  //   var itemHolder = [];
-  //   dialCodes.map((item) =>
-  //     itemHolder.push(
-  //       <div id="code-item" onClick={() => {handleIt(item)}}>
-  //         {item.code} {item.country}
-  //       </div>
-  //     )
-  //   );
-  
-  //   return <div id={showCodesList ? "codes-list" : "codes-list-inactive"}>{itemHolder}</div>;
-  // }
 
   return (
     // <div>
@@ -240,8 +140,6 @@ function Navbar() {
       </div>
     <LoginModal showOverlay={showOverlay} setShowOverlay={setShowOverlay} />
       </div> 
-
-    // </div>
   );
 }
 
