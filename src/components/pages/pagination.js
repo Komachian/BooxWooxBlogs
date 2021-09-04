@@ -6,6 +6,54 @@ import icon from "../images/bookmark.svg";
 import authorPic from "../images/img-2.jpg";
 import pic from "../images/img-1.jpg";
 
+function dateFormat(date) {
+  var pieced = date.split("/")
+  var formatted = pieced[1];
+  switch(pieced[0]) {
+      case "01":
+          formatted += " January, "
+          break;
+      case "02":
+          formatted += " February, "
+          break;
+      case "03":
+          formatted += " March, "
+          break;
+      case "04":
+          formatted += " April, "
+          break;
+      case "05":
+          formatted += " May, "
+          break;
+      case "06":
+          formatted += " June, "
+          break;
+      case "07":
+          formatted += " July, "
+          break;
+      case "08":
+          formatted += " August, "
+          break;
+      case "09":
+          formatted += " September, "
+          break;
+      case "10":
+          formatted += " October, "
+          break;
+      case "11":
+          formatted += " November, "
+          break;
+      case "12":
+          formatted += " December, "
+          break;
+      default:
+          formatted += " NaN, "
+  }
+  formatted += pieced[2]
+
+  return formatted
+}
+
 function Blog(blog) {
   return (
     <div className="blog-box">
@@ -62,7 +110,6 @@ const Blogs = ({ blogs, loading, error }) => {
         color="#FFBD06"
         height={100}
         width={100}
-        timeout={5000}
       />
       </div>
     );
@@ -81,12 +128,12 @@ const Blogs = ({ blogs, loading, error }) => {
       <Blog
         user="silverduck204"
         authorPic="{blogs[i].authorPic}"
-        date="10 August, 2021"
+        date={dateFormat(blog.Date)}
         likes="24"
         pic="{blogs[i].pic}"
-        heading={blog.title}
-        content={blog.description}
-        author="Xaviers"
+        heading={blog.Title}
+        content={blog.Description}
+        author={blog.Author}
         tags="Horror,timepass"
         time="2 min"
         bookmarked={true}
@@ -107,7 +154,7 @@ function Pagination() {
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
-      await axios.get("https://azz75mvkyi.execute-api.ap-south-1.amazonaws.com/Prod/readBlog").then(res => console.log(res)).catch(error => {console.log("Error! " + error); setError(true)});
+      await axios.get("https://azz75mvkyi.execute-api.ap-south-1.amazonaws.com/Prod/readBlog").then(res => {console.log(res); setBlogs(res.data.data.Items)}).catch(error => {console.log("Error! " + error); setError(true)});
       setLoading(false);
     };
 
@@ -136,7 +183,7 @@ function Pagination() {
     <div>
       <Blogs blogs={blogsToShow} loading={loading} error={error} />
       <div
-        id={next >= 100 || (loading || error) ? "load-inactive" : "load-up"}
+        id={next >= 11 || (loading || error) ? "load-inactive" : "load-up"}
         onClick={handleShowMoreBlogs}
       >
         <a id="load">Load more</a>

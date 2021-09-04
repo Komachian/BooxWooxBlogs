@@ -12,74 +12,74 @@ import pen from '../../../assets/pen.svg'
 import drafts from '../../../assets/drafts.svg'
 import logout from '../../../assets/logout.svg'
 import "./misc.css";
-
+import Loader from "react-loader-spinner";
 
 function Login() {
-  const [showOverlay, setShowOverlay] = useState(false);
-  const [showLogin, setShowLogin] = useState(true);
-  const [showOTP, setShowOTP] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
+//   const [showLogin, setShowLogin] = useState(true);
+//   const [showOTP, setShowOTP] = useState(false);
 
 
-  const [showError,setShowError] = useState(false);
-  const [dialCode, setDialCode] = useState("+91");
+//   const [showError,setShowError] = useState(false);
+//   const [dialCode, setDialCode] = useState("+91");
 
-  function handleLogin() {
-    if(document.getElementById("input-pn").value.length < 10) {
-      setShowError(true);
-    }
-    else {
-      setShowLogin(false);
-      setShowOTP(true);
-    }
-  }
+//   function handleLogin() {
+//     if(document.getElementById("input-pn").value.length < 10) {
+//       setShowError(true);
+//     }
+//     else {
+//       setShowLogin(false);
+//       setShowOTP(true);
+//     }
+//   }
 
-  const [otp,setOtp] = useState('');
+//   const [otp,setOtp] = useState('');
 
-  function handleChange(otp) {
-      setOtp(otp);
-  }
+//   function handleChange(otp) {
+//       setOtp(otp);
+//   }
 
-  const [time, setTime] = useState(120);
+//   const [time, setTime] = useState(120);
 
   
 
-  function counter(id) {
-    var timer = document.getElementById("time-left").innerText;
-    timer = timer.split(':');
-    var minutes = timer[0];
-    var seconds = timer[1];
-    if (minutes == 0 && seconds == 0) {
-      setTime(0);
-      document.getElementById("time-left").innerText = ('0' + ':' + '00');
-      clearInterval(id);
-      return;
-    }
-    else if (seconds <= 10 && seconds > 0) {
-      seconds = '0' + --seconds;
-    }
-    else if(seconds == 0) {
-      minutes--;
-      seconds = 59;
-    }
-    else {
-      seconds--;
-    }
+//   function counter(id) {
+//     var timer = document.getElementById("time-left").innerText;
+//     timer = timer.split(':');
+//     var minutes = timer[0];
+//     var seconds = timer[1];
+//     if (minutes == 0 && seconds == 0) {
+//       setTime(0);
+//       document.getElementById("time-left").innerText = ('0' + ':' + '00');
+//       clearInterval(id);
+//       return;
+//     }
+//     else if (seconds <= 10 && seconds > 0) {
+//       seconds = '0' + --seconds;
+//     }
+//     else if(seconds == 0) {
+//       minutes--;
+//       seconds = 59;
+//     }
+//     else {
+//       seconds--;
+//     }
 
-    document.getElementById("time-left").innerText = (minutes + ':' + seconds);
-    setTime((minutes * 60) + seconds);
-  };
+//     document.getElementById("time-left").innerText = (minutes + ':' + seconds);
+//     setTime((minutes * 60) + seconds);
+//   };
 
-  useEffect(() => {
-    var timerID = setInterval(counter, 1000);
-    if(time == 0) {
-      clearInterval(timerID);
-    }
-    return () => {clearInterval(timerID)};
-  }, [])
+//   useEffect(() => {
+//     var timerID = setInterval(counter, 1000);
+//     if(time == 0) {
+//       clearInterval(timerID);
+//     }
+//     return () => {clearInterval(timerID)};
+//   }, [])
  
    return (
      <div id={showOverlay ? "overlay" : "overlay-inactive"}>
-      <div className="overlay-box" id={showLogin ? "log-sign-box" : "log-sign-box-inactive"} >
+      {/* <div className="overlay-box" id={showLogin ? "log-sign-box" : "log-sign-box-inactive"} >
         <div id="log-sign">
           Login/Signup
           <img id="x" src={x} />
@@ -126,6 +126,26 @@ function Login() {
           By continuing, you agree to BooxWoox's Terms of Use and Privacy
           Policy
         </div>
+      </div> */}
+
+      <div id="modal-prompt">
+      <Loader
+        type="Rings"
+        color="#FFBD06"
+        height={200}
+        width={200}
+      />
+      </div>
+      <div id="modal-prompt">
+        <img src={tick} height='60' />
+        <div>
+          Successfully logged in!
+        </div>
+      </div>
+      <div id="modal-prompt">
+      <div>
+        Oops! There seems to be an error.<br/>Please try again.
+      </div>
       </div>
       </div>
    )

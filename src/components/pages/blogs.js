@@ -171,6 +171,7 @@ function BlogsPage() {
           </div>
           <Pagination />
         </div>
+        
         <div
           id="side"
           onBlur={() => {

@@ -38,7 +38,7 @@ function Navbar() {
   window.addEventListener("resize", checkSideMenuSize);
   window.addEventListener("scroll", closeSideMenu)
 
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(false);
   // const [showLogin, setShowLogin] = useState(true);
   // const [showOTP, setShowOTP] = useState(false);
   // const [showCodesList, setShowCodesList] = useState(false);
@@ -143,7 +143,7 @@ function Navbar() {
   // }
 
   return (
-    <div>
+    // <div>
     <div className="nav-container">
       <nav className="navbar">
         <div className="logo" onClick={closeSideMenu}>
@@ -238,65 +238,10 @@ function Navbar() {
           </li>
         </ul>
       </div>
-
-      {/* <div id={showOverlay ? "overlay" : "overlay-inactive"} onBlur={() => {setShowOverlay(false)}}>
-      <div className="overlay-box" id={(showLogin && showOverlay) ? "log-sign-box" : "log-sign-box-inactive"}>
-        <div id="log-sign">
-          Login/Signup
-          <img onClick={() => {setShowOverlay(false); setShowError(false)}} id="x" src={x} />
-        </div>
-        <div id="enter-your-pn">Enter your phone number</div>
-        <div id="number-box">
-          <div id="local-code" onClick={() => setShowCodesList(!showCodesList)}>
-            <div id="text">{dialCode}</div>
-            <img id={showCodesList ? "chevron-up" : "chevron-down"} src={chevronDown} />
-            <img id="vertical-line" src={verticalLine} />
-          </div>
-          <input
-            id="input-pn"
-            type="tel"
-            maxlength="10"
-            placeholder="* * * * * * * * * *"
-          />
-        </div>
-        <CodeList onBlur={() => setShowCodesList(false)} />
-        <div id={showError ? "error-message" : "error-message-inactive"}>*The entered phone number must nescessarily have 10 digits</div>
-        <div id="sendotp-btn"  onClick={handleLogin}><div>Send OTP</div></div>
-      </div>
-
-      <div className="overlay-box" id={(showOTP && showOverlay) ? "otp-box" : "otp-box-inactive"} >
-        <div id="log-sign">
-          <img id="back-arrow" src={backArrow} onClick={() => {setShowOTP(false); setShowLogin(true)}} />
-          Login/Signup
-        </div>
-        <div id="enter-your-otp">Please enter the 4-digit OTP</div>
-        <div id="your-pn">
-          Sent on your phone number <div id="pn">xxxxxx7654</div>
-        </div>
-        <div id="input-otp">
-          <input id="dig1" className="input-digit" type="number" maxlength="1" />
-          <input id="dig2" className="input-digit" type="number" maxlength="1" />
-          <input id="dig3" className="input-digit" type="number" maxlength="1" />
-          <input id="dig4" className="input-digit" type="number" maxlength="1" />
-        </div>
-        <div id={showOTPError ? "error-message" : "error-message-inactive"}>*The OTP must nescessarily be of 4 digits</div>
-        <div id={time != 0 ? "resend" : "resend-inactive"}>Resend in <div id="time-left">2:00</div></div>
-        <div id={time == 0 ? "resend-otp" : "resend-inactive"}>Resend OTP</div>
-        <div id="login-btn" onClick={handleOTP}><div>Login</div></div>
-        
-        <div id="tnc">
-          By continuing, you agree to BooxWoox's Terms of Use and Privacy
-          Policy
-        </div>
-      </div>
-      </div> */}
-
     <LoginModal showOverlay={showOverlay} setShowOverlay={setShowOverlay} />
-
-
       </div> 
 
-    </div>
+    // </div>
   );
 }
 
