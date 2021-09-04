@@ -4,7 +4,7 @@ import Navbar from "./components/Global/nav";
 import Footer from './components/Global/Footer'
 import Home from "./components/Home/index";
 import BlogsPage from "./components/pages/blogs";
-import Misc from "./components/Home/components/misc";
+import Blog from "./components/pages/blog";
 import { AuthProvider } from "./components/Global/AuthContext";
 import { UserProvider } from "./components/Global/UserContext";
 
@@ -19,7 +19,7 @@ function App() {
       <AuthProvider>
         <Route path="/" exact component={Home} />
         <Route path="/blogs" component={BlogsPage} />
-        <Route path="/features" component={Misc} />
+        <Route path="/features" component={Blog} />
         </AuthProvider>
       </UserProvider>
       </Switch>
