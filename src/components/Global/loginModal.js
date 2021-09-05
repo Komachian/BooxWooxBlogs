@@ -54,7 +54,7 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
     axios({
       method: 'post',
       url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
-      data: { "phone":{pn}}
+      data: { "phone": {pn}}
     }).then(response => {setOTPToken(response.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {/*setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true)*/ setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)});
   }
 

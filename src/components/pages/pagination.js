@@ -1,58 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./blogs.css";
 import icon from "../images/bookmark.svg";
 import authorPic from "../images/img-2.jpg";
 import pic from "../images/img-1.jpg";
-
-function dateFormat(date) {
-  var pieced = date.split("/")
-  var formatted = pieced[1];
-  switch(pieced[0]) {
-      case "01":
-          formatted += " January, "
-          break;
-      case "02":
-          formatted += " February, "
-          break;
-      case "03":
-          formatted += " March, "
-          break;
-      case "04":
-          formatted += " April, "
-          break;
-      case "05":
-          formatted += " May, "
-          break;
-      case "06":
-          formatted += " June, "
-          break;
-      case "07":
-          formatted += " July, "
-          break;
-      case "08":
-          formatted += " August, "
-          break;
-      case "09":
-          formatted += " September, "
-          break;
-      case "10":
-          formatted += " October, "
-          break;
-      case "11":
-          formatted += " November, "
-          break;
-      case "12":
-          formatted += " December, "
-          break;
-      default:
-          formatted += " NaN, "
-  }
-  formatted += pieced[2]
-
-  return formatted
-}
+import dateFormatter from "../Global/dateFormatter";
 
 function Blog(blog) {
   return (
@@ -74,7 +28,7 @@ function Blog(blog) {
         <div id="likes">{blog.likes}</div>
       </div>
 
-      <div className="body" onClick={() => {window.location = "/blog"}}>
+      <Link className="body" onClick={() => {window.location = "/blog"}}>
         <img src={pic} alt="blog-pic" className="image" />
 
         <div className="content">
@@ -93,7 +47,7 @@ function Blog(blog) {
             <i class="fa fa-clock-o"></i> {blog.time}
           </a>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
@@ -128,7 +82,7 @@ const Blogs = ({ blogs, loading, error }) => {
       <Blog
         user="silverduck204"
         authorPic="{blogs[i].authorPic}"
-        date={dateFormat(blog.Date)}
+        date={dateFormatter(blog.Date)}
         likes="24"
         pic="{blogs[i].pic}"
         heading={blog.Title}

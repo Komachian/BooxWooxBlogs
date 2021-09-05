@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import heart from '../../assets/heart.svg'
@@ -7,6 +7,7 @@ import eye from '../../assets/eye.svg'
 import chevronDown from '../../assets/chevron-down.svg'
 import authorPic from "../images/img-2.jpg";
 import pic from "../images/img-1.jpg";
+import dateFormatter from '../Global/dateFormatter'
 import './blog.css'
 
 const replies = [
@@ -17,15 +18,53 @@ const replies = [
 
 const blogID = "4bc13e69-409f-4ebe-a0bc-98190b83c3c2";
 
-function axe() {
-    axios({
-        method: 'post',
-        url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
-        data:  {id: {blogID}} ,
-    }).then(response => {console.log(response)}).catch(err => console.log(err))
-}
-
-axe();
+// function dateFormat(date) {
+//     var pieced = date.split("/")
+//     var formatted = pieced[1];
+//     switch(pieced[0]) {
+//         case "01":
+//             formatted += " January, "
+//             break;
+//         case "02":
+//             formatted += " February, "
+//             break;
+//         case "03":
+//             formatted += " March, "
+//             break;
+//         case "04":
+//             formatted += " April, "
+//             break;
+//         case "05":
+//             formatted += " May, "
+//             break;
+//         case "06":
+//             formatted += " June, "
+//             break;
+//         case "07":
+//             formatted += " July, "
+//             break;
+//         case "08":
+//             formatted += " August, "
+//             break;
+//         case "09":
+//             formatted += " September, "
+//             break;
+//         case "10":
+//             formatted += " October, "
+//             break;
+//         case "11":
+//             formatted += " November, "
+//             break;
+//         case "12":
+//             formatted += " December, "
+//             break;
+//         default:
+//             formatted += " NaN, "
+//     }
+//     formatted += pieced[2]
+  
+//     return formatted
+//   }
 
 function Replies() {
     if(replies.length === 0) return <div id="replies-list"><div>No replies to show</div></div>;
@@ -43,6 +82,22 @@ function Replies() {
 }
 
 function Blog() {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [date, setDate] = useState('');
+
+
+useEffect(() => {
+    function axe() {
+        axios({
+            method: 'post',
+            url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
+            data:  {id: "4bc13e69-409f-4ebe-a0bc-98190b83c3c2"} ,
+        }).then(response => {console.log(response.data.message.Item); setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
+    }
+    axe();
+  }, []);
+
     const [showReplies, setShowReplies] = useState(false);
     return (
     <div id="page">
@@ -72,9 +127,9 @@ function Blog() {
                 </div>
                 <div id="content">
                     <div id="head">
-                        <div id="title">Jammu Kashmir is the most happening state of India</div>
+                        <div id="title">{title}</div>
                         <div id="head-info">
-                            <div id="time-date">15:03 July 19, 2020</div>
+                            <div id="time-date">15:03 {dateFormatter(date)}</div>
                             <div id="views"> <img id="eye" src={eye}/> 204</div>
                         </div>
                     </div>
@@ -85,7 +140,8 @@ function Blog() {
 
                     <div id="blog-body">
                     <ReactMarkdown>
-                        **What is Lorem Ipsum?**
+                    {content}
+                        {/* **What is Lorem Ipsum?**
 
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         *Why do we use it?*
@@ -99,7 +155,7 @@ function Blog() {
                         The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
                         *Where can I get some?*
 
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. */}
                         </ReactMarkdown>
                     </div>
                     <div id="comments-box">
