@@ -1,0 +1,47 @@
+.background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.background .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 7px;
+}
+
+.background .modal .body .cross {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+
+  cursor: pointer;
+}
+.background .modal .body .cross:hover {
+  opacity: 1;
+}
+
+.background .modal .body .cross::after,
+.background .modal .body .cross::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  height: 30px;
+  width: 2px;
+  background-color: #333;
+}
+
+.background .modal .body .cross::before {
+  transform: rotate(45deg);
+}
+.background .modal .body .cross::after {
+  transform: rotate(-45deg);
+}

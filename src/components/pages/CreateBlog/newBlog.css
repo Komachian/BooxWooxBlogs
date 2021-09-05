@@ -243,3 +243,27 @@
     height: 50vh;
   }
 }
+
+/* modal css */
+.submit-success {
+  background-color: #e5e5e5;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  border-radius: 7px;
+}
+.submit-success svg {
+  margin-bottom: 1rem;
+}
+
+.submit-success h3 {
+  margin-bottom: 1rem;
+}
+.submit-success p {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.submit-success .btn {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
