@@ -39,3 +39,11 @@
 
 - 28, July 2021
     - React Project Initialised
+
+# .env config
+```shell
+REACT_APP_AUTH_TOKEN=<auth-token>
+REACT_APP_WRITE_BLOG_ENDPOINT=<end-point>
+REACT_APP_UPLOAD_IMAGE=https://api.imgur.com/3/image
+REACT_APP_ACCESS_TOKEN=<access-token>
+```
