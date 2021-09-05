@@ -16,55 +16,7 @@ const replies = [
     {user:"goldenduck04", content:"It's very sad how people misinterpret things for their own benefit"}
 ]
 
-const blogID = "4bc13e69-409f-4ebe-a0bc-98190b83c3c2";
-
-// function dateFormat(date) {
-//     var pieced = date.split("/")
-//     var formatted = pieced[1];
-//     switch(pieced[0]) {
-//         case "01":
-//             formatted += " January, "
-//             break;
-//         case "02":
-//             formatted += " February, "
-//             break;
-//         case "03":
-//             formatted += " March, "
-//             break;
-//         case "04":
-//             formatted += " April, "
-//             break;
-//         case "05":
-//             formatted += " May, "
-//             break;
-//         case "06":
-//             formatted += " June, "
-//             break;
-//         case "07":
-//             formatted += " July, "
-//             break;
-//         case "08":
-//             formatted += " August, "
-//             break;
-//         case "09":
-//             formatted += " September, "
-//             break;
-//         case "10":
-//             formatted += " October, "
-//             break;
-//         case "11":
-//             formatted += " November, "
-//             break;
-//         case "12":
-//             formatted += " December, "
-//             break;
-//         default:
-//             formatted += " NaN, "
-//     }
-//     formatted += pieced[2]
-  
-//     return formatted
-//   }
+var blogID = '';
 
 function Replies() {
     if(replies.length === 0) return <div id="replies-list"><div>No replies to show</div></div>;
@@ -86,17 +38,25 @@ function Blog() {
     const [content, setContent] = useState('');
     const [date, setDate] = useState('');
 
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: "smooth"})
+    }, [])
 
-useEffect(() => {
-    function axe() {
-        axios({
-            method: 'post',
-            url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
-            data:  {id: "4bc13e69-409f-4ebe-a0bc-98190b83c3c2"} ,
-        }).then(response => {console.log(response.data.message.Item); setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
-    }
-    axe();
-  }, []);
+    useEffect(() => {
+        blogID = window.location.href.split("/").slice(-1)[0];
+        console.log(blogID);
+    }, []);
+
+    useEffect(() => {
+        function axe() {
+            axios({
+                method: 'post',
+                url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
+                data:  {id: blogID} ,
+            }).then(response => {console.log(response.data.message.Item); setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
+        }
+        axe();
+    }, []);
 
     const [showReplies, setShowReplies] = useState(false);
     return (

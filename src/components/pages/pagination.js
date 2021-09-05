@@ -28,7 +28,7 @@ function Blog(blog) {
         <div id="likes">{blog.likes}</div>
       </div>
 
-      <Link className="body" onClick={() => {window.location = "/blog"}}>
+      <Link className="body" to={"/blog/" + blog.id} >
         <img src={pic} alt="blog-pic" className="image" />
 
         <div className="content">
@@ -80,6 +80,7 @@ const Blogs = ({ blogs, loading, error }) => {
   blogs.map((blog) =>
     blogHolder.push(
       <Blog
+        id={blog.id}
         user="silverduck204"
         authorPic="{blogs[i].authorPic}"
         date={dateFormatter(blog.Date)}

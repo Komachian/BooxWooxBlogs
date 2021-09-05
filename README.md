@@ -1,8 +1,5 @@
 # BooxWoox Blogs
 
-## To-do
-- Get single blog specifically on clicking a blog in the blogs-list
-
 ## Issues
 - Overlay has issues while scrolling on Firefox
 - Login API returns CORS error
