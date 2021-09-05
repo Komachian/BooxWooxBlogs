@@ -74,7 +74,7 @@ function Blog(blog) {
         <div id="likes">{blog.likes}</div>
       </div>
 
-      <div className="body">
+      <div className="body" onClick={() => {window.location = "/blog"}}>
         <img src={pic} alt="blog-pic" className="image" />
 
         <div className="content">

@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react'
 import ReactDom from 'react-dom';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
-import './nav.css'
 import './loginModal.css'
 
 import dialCodes from '../Home/components/dial-codes';
@@ -39,7 +38,7 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
         method: 'post',
         url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
         data: { "phone":{pn}}
-      }).then(response => {setOTPToken(response.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {/*setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true)*/ setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)});
+      }).then(response => {setOTPToken(response.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true) /*setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)*/});
       // console.log(pn);
       // setShowLogin(false);
       // setShowOTP(true);

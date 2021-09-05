@@ -1,5 +1,8 @@
 # BooxWoox Blogs
 
+## To-do
+- Get single blog specifically on clicking a blog in the blogs-list
+
 ## Issues
 - Overlay has issues while scrolling on Firefox
 - Login API returns CORS error
@@ -8,9 +11,12 @@
 - Side menu of blogs page not fixed
 - Overlay onBlur() not working as expected
 - Character inputs are not rejected in phone-number / OTP box
-- *Duplicate blogs are displayed*
+- **Duplicate blogs are displayed in Blogs list**
 
 ## Updates
+- 4 September, 2021
+    - Single Blog Page created
+
 - 20 August, 2021
     - Login Flow Created
 

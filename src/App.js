@@ -19,7 +19,7 @@ function App() {
       <AuthProvider>
         <Route path="/" exact component={Home} />
         <Route path="/blogs" component={BlogsPage} />
-        <Route path="/features" component={Blog} />
+        <Route path="/blog" component={Blog} />
         </AuthProvider>
       </UserProvider>
       </Switch>

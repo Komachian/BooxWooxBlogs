@@ -12,6 +12,27 @@
   width: 10%;
 }
 
+@media screen and (max-width: 930px) {
+  #sidebar {
+    display: none;
+  }
+  #body {
+    width: 100%;
+  }
+  #image {
+    width: 100%;
+  }
+  #featured-image {
+    width: 100%;
+  }
+  #blog-body {
+    font-size: 4px;
+  }
+  #comments-box {
+    font-size: 4px;
+  }
+}
+
 #author-info {
   align-self: center;
   display: flex;
@@ -27,10 +48,18 @@
   cursor: pointer;
 }
 
+#like :hover {
+    transform: scale(1.1);
+}
+
 #share {
   height: 20px;
   width: 19px;
   cursor: pointer;
+}
+
+#share :hover {
+    transform: scale(1.1);
 }
 
 #profilepic {
@@ -45,14 +74,18 @@
   cursor: pointer;
 }
 
+#profilepic :hover {
+    transform: scale(1.1);
+}
+
 #username {
   font-family: PT Serif;
   font-style: normal;
   font-weight: normal;
   font-size: 23px;
   line-height: 30px;
-
   color: #000000;
+  margin-bottom: 15px;
 }
 
 #badge-info {
@@ -123,6 +156,7 @@
 }
 
 #head-info {
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -202,7 +236,7 @@
 
 #comment-input {
   padding: 10px 20px 10px 20px;
-  width: 100%;
+  width: 90%;
   height: 130px;
   border-radius: 14px;
   border: none;
@@ -218,10 +252,6 @@
   cursor: pointer;
 }
 
-#comment-input :focus {
-    cursor: crosshair;
-}
-
 #post-btn {
   position: absolute;
   right: 50px;
@@ -235,6 +265,16 @@
   background-color: #ffae00;
   justify-self: right;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#post-btn :hover {
+    color: #e5e5e5;
+    transition: 0.5s;
+}
+
+#post-btn :active {
+    transform: translateY(4px);
 }
 
 #post {
