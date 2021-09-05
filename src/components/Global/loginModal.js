@@ -34,11 +34,12 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
     else {
       setTime(120);
       setModalLoading(true);
+      console.log(pn);
       axios({
         method: 'post',
         url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
-        data: { "phone":{pn}}
-      }).then(response => {setOTPToken(response.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true) /*setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)*/});
+        data: { phone: pn }
+      }).then(response => {console.log(response); setOTPToken(response.data.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true) /*setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)*/});
       // console.log(pn);
       // setShowLogin(false);
       // setShowOTP(true);
@@ -54,26 +55,24 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
     axios({
       method: 'post',
       url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/sendauthotp',
-      data: { "phone": {pn}}
-    }).then(response => {setOTPToken(response.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {/*setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true)*/ setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)});
+      data: { phone: pn }
+    }).then(response => {setOTPToken(response.data.token); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)}).catch(() => {/*setShowLogin(false); setShowError(false); setModalLoading(false); setModalError(true)*/ setOTPToken(3000); setShowLogin(false); setShowError(false); setModalLoading(false); setShowOTP(true)});
   }
 
   function handleOTP() {
-    if(document.getElementById("dig1").value == '' || document.getElementById("dig2").value == '' || document.getElementById("dig3").value == '' || document.getElementById("dig4").value == '') {
+    if(dig1.current.value == '' || dig2.current.value == '' || dig3.current.value == '' || dig4.current.value == '' || dig5.current.value == '' || dig6.current.value == ''){
       setShowOTPError(true);
     }
     else {
-      setOtp(document.getElementById("dig1").value + document.getElementById("dig2").value + document.getElementById("dig3").value + document.getElementById("dig4").value);
-      console.log(otp);
-      console.log(pn);
+      setOtp(dig1.current.value + dig2.current.value + dig3.current.value + dig4.current.value + dig5.current.value + dig6.current.value);
       setShowOTP(false);
       setModalLoading(true);
       axios({
           method: 'post',
           url: 'https://wz66sw2su9.execute-api.ap-south-1.amazonaws.com/Prod/verifyOtp',
-          data:  {"otp":{otp}} ,
-          headers: {token: {OTPToken}}
-        }).then(response => {setOTPToken(response.token); setModalLoading(false); setShowOTPError(false); displaySuccess()}).catch(() => { setModalLoading(false); setShowOTPError(false); setModalError(true)});
+          data:  {otp: dig1.current.value + dig2.current.value + dig3.current.value + dig4.current.value + dig5.current.value + dig6.current.value},
+          headers: {token: OTPToken}
+        }).then(response => {setLoginToken(response.data.token); setModalLoading(false); setShowOTPError(false); displaySuccess()}).catch(() => { setModalLoading(false); setShowOTPError(false); setModalError(true)});
       // setShowOTPError(false);
       // displaySuccess();
     }
@@ -89,6 +88,17 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
   const dig2 = useRef('');
   const dig3 = useRef('');
   const dig4 = useRef('');
+  const dig5 = useRef('');
+  const dig6 = useRef('');
+
+  // function handleOTPChange(ref) {
+  //   if(dig3.current.value != null){
+  //     dig4.current.focus();
+  //   }
+  //   else {
+  //     dig3.current.focus();
+  //   }
+  // }
 
   const [otp,setOtp] = useState('');
   const [pn,setPN] = useState('');
@@ -165,6 +175,8 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
             placeholder="* * * * * * * * * *"
             min="0"
             max="9"
+            value={pn}
+            onChange={(e) => {setPN(e.target.value)}}
           />
         </div>
         <CodeList onBlur={() => setShowCodesList(false)} />
@@ -179,13 +191,15 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
         </div>
         <div id="enter-your-otp">Please enter the 4-digit OTP</div>
         <div id="your-pn">
-          Sent on your phone number <div id="pn">xxxxxx{pn.substr(9, 4)}</div>
+          Sent on your phone number <div id="pn">xxxxxx{pn.substr(6, 4)}</div>
         </div>
         <div id="input-otp">
           <input id="dig1" className="input-digit" type="number" min="0" max="9" maxlength="1" pattern="[0-9]" ref={dig1} onChange={() => {(dig1.current.value != null) ? dig2.current.focus() : dig1.current.focus()}} />
           <input id="dig2" className="input-digit" type="number" min="0" max="9" maxlength="1" pattern="[0-9]" ref={dig2} onChange={() => {(dig2.current.value != null) ? dig3.current.focus() : dig2.current.focus()}} />
           <input id="dig3" className="input-digit" type="number" maxlength="1" ref={dig3} pattern="\d" onChange={() => {(dig3.current.value != null) ? dig4.current.focus() : dig3.current.focus()}} />
-          <input id="dig4" className="input-digit" type="number" maxlength="1" pattern="\d" ref={dig4} />
+          <input id="dig4" className="input-digit" type="number" maxlength="1" ref={dig4} pattern="\d" onChange={() => {(dig4.current.value != null) ? dig5.current.focus() : dig4.current.focus()}} />
+          <input id="dig5" className="input-digit" type="number" maxlength="1" ref={dig5} pattern="\d" onChange={() => {(dig5.current.value != null) ? dig6.current.focus() : dig5.current.focus()}} />
+          <input id="dig6" className="input-digit" type="number" maxlength="1" pattern="\d" ref={dig6} />
         </div>
         <div id={showOTPError ? "error-message" : "error-message-inactive"}>*The OTP must nescessarily be of 4 digits</div>
         <div id={time != 0 ? "resend" : "resend-inactive"}>Resend in <div id="time-left" >{timeLeft}</div></div>

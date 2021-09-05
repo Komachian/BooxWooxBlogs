@@ -44,7 +44,6 @@ function Blog() {
 
     useEffect(() => {
         blogID = window.location.href.split("/").slice(-1)[0];
-        console.log(blogID);
     }, []);
 
     useEffect(() => {
@@ -53,7 +52,7 @@ function Blog() {
                 method: 'post',
                 url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
                 data:  {id: blogID} ,
-            }).then(response => {console.log(response.data.message.Item); setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
+            }).then(response => {setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
         }
         axe();
     }, []);

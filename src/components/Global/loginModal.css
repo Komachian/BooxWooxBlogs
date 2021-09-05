@@ -310,8 +310,8 @@ h1 {
 
 .input-digit {
   border: none;
-  height: 46px;
-  width: 58px;
+  height: 36px;
+  width: 40px;
   border-radius: 4px;
   background-color: #e9e9e9;
   -moz-appearance: textfield;
