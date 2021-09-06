@@ -8,7 +8,7 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState({username: "Abracadabra"});
   const [showOverlay, setShowOverlay] = useState(false);
 
   const uploadBlog = async (blogData) => {
