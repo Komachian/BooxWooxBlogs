@@ -643,7 +643,6 @@
   }
 }
 
-
 #subscribe-form {
   position: absolute;
   z-index: 1;
@@ -662,8 +661,8 @@
   top: 0.875rem;
 }
 
-#input-email-id {
-  width: 68%;
+#input-email-id-blogs {
+  width: 90%;
   margin-bottom: 2rem;
   border: 2px solid #7b7b7b;
   font-size: 1.125rem;

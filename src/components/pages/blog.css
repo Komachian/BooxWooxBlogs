@@ -49,7 +49,7 @@
 }
 
 #like :hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #share {
@@ -59,7 +59,7 @@
 }
 
 #share :hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #profilepic {
@@ -75,10 +75,10 @@
 }
 
 #profilepic :hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-#username {
+#username-blog {
   font-family: PT Serif;
   font-style: normal;
   font-weight: normal;
@@ -137,7 +137,7 @@
 }
 
 #icons {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 #body {
@@ -269,12 +269,12 @@
 }
 
 #post-btn :hover {
-    color: #e5e5e5;
-    transition: 0.5s;
+  color: #e5e5e5;
+  transition: 0.5s;
 }
 
 #post-btn :active {
-    transform: translateY(4px);
+  transform: translateY(4px);
 }
 
 #post {
@@ -325,10 +325,10 @@
 }
 
 #reply-dropdown {
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
   font-family: PT Serif;
   font-style: normal;
   font-weight: normal;
@@ -340,16 +340,16 @@
 }
 
 #chevron-down svg {
-    position: relative;
-    display: inline;
-    height: 20px;
+  position: relative;
+  display: inline;
+  height: 20px;
 }
 
 #chevron-up svg {
-    position: relative;
-    display: inline;
-    height: 20px;
-    transform: rotate(180deg);
+  position: relative;
+  display: inline;
+  height: 20px;
+  transform: rotate(180deg);
 }
 
 #reply-btn {

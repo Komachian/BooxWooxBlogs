@@ -14,18 +14,18 @@ function App() {
     return (
         <>
             <Router>
+            <UserProvider>
+                <AuthProvider>
                 <Navbar />
                 <Switch>
-                    <UserProvider>
-                        <AuthProvider>
                             <Route path='/' exact component={Home} />
                             <Route path='/blogs' component={BlogsPage} />
-                            <Route path='/create-blog' component={NewBlog} />
+                            <PrivateRoute path='/create-blog' component={NewBlog} />
                             <Route path='/blog' component={Blog} />
-                        </AuthProvider>
-                    </UserProvider>
                 </Switch>
                 <Footer />
+                </AuthProvider>
+                </UserProvider>
             </Router>
         </>
     )
