@@ -13,7 +13,10 @@
 }
 
 @keyframes create-blog-box {
-  0% {opacity: 0%; transform: translateX(-100px);}
+  0% {
+    opacity: 0%;
+    transform: translateX(-100px);
+  }
 }
 
 .lines {
@@ -57,7 +60,7 @@
   margin-top: 20px;
 }
 
-#line-3-btn:hover {
+#line-3:hover {
   color: seashell;
   transition: 0.5s;
 }
