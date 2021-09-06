@@ -15,6 +15,10 @@
 - **Duplicate blogs are displayed in Blogs list**
 
 ## Updates
+- 6 September, 2021
+    - Functional website with home-page, blogs-list, single-blog and login functionality ready
+    - Private Routes incorporated
+
 - 4 September, 2021
     - Single Blog Page created
 
