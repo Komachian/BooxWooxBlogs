@@ -36,6 +36,7 @@ function Replies() {
 function Blog() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [author, setAuthor] = useState('');
     const [date, setDate] = useState('');
 
     useEffect(() => {
@@ -52,7 +53,7 @@ function Blog() {
                 method: 'post',
                 url: 'https://dnul4ngbfk.execute-api.ap-south-1.amazonaws.com/Prod/read1Blog',
                 data:  {id: blogID} ,
-            }).then(response => {setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S)}).catch(err => console.log(err))
+            }).then(response => {setTitle(response.data.message.Item.Title.S); setContent(response.data.message.Item.Content.S); setDate(response.data.message.Item.Date.S); setAuthor(response.data.message.Item.Author.S)}).catch(err => console.log(err))
         }
         axe();
     }, []);
@@ -72,7 +73,7 @@ function Blog() {
                     <div id="author">Author<hr /*style={width:"fit-content"}*/ /></div>
                     <div>
                         <div id="author-username">
-                            silverduck04
+                            {author}
                         </div>
                         <div id="author-bio">
                             I am a jobless, hopeless, senseless individual who's still struggling to figure out why he's alive :)

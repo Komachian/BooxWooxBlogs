@@ -73,8 +73,6 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
           data:  {otp: dig1.current.value + dig2.current.value + dig3.current.value + dig4.current.value + dig5.current.value + dig6.current.value},
           headers: {token: OTPToken}
         }).then(response => {setLoginToken(response.data.token); setModalLoading(false); setShowOTPError(false); displaySuccess()}).catch(() => { setModalLoading(false); setShowOTPError(false); setModalError(true)});
-      // setShowOTPError(false);
-      // displaySuccess();
     }
   }
 
@@ -90,15 +88,6 @@ function LoginModal( {showOverlay, setShowOverlay} ) {
   const dig4 = useRef('');
   const dig5 = useRef('');
   const dig6 = useRef('');
-
-  // function handleOTPChange(ref) {
-  //   if(dig3.current.value != null){
-  //     dig4.current.focus();
-  //   }
-  //   else {
-  //     dig3.current.focus();
-  //   }
-  // }
 
   const [otp,setOtp] = useState('');
   const [pn,setPN] = useState('');
