@@ -20,6 +20,10 @@
   }
 }
 
+#nav {
+  position: sticky;
+}
+
 body {
   font-family: Poppins;
   background-color: #f3f3f3;
@@ -29,4 +33,17 @@ body {
 a {
   text-decoration: none;
   color: #000;
+}
+
+#overlay {
+  z-index: 10;
+  background-color: black;
+  opacity: 80%;
+  height: 100%;
+  width: 100%;
+}
+
+#login-prompt {
+  align-self: center;
+  justify-self: center;
 }

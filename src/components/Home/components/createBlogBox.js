@@ -11,7 +11,7 @@ function CreateBlogBox() {
       <div className='lines' id='line-2'>
         Create blogs for free
       </div>
-      <Link to='/create-blog' id='line-3-btn'>
+      <Link to='/create-blog' id='line-3-btn' >
         <div className='lines' id='line-3'>
           Create Blog
         </div>

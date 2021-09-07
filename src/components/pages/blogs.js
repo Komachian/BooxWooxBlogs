@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./blogs.css";
+import mailSymb from "../../assets/mail-input-logo.svg";
 import Pagination from "./pagination";
 
 function BlogsPage() {
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }, [])
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const [sortAttribute, setSortAttribute] = useState("recommended");
   const [sortAscending, setSortAscending] = useState(true);
   const [dropdownMenu, setDropdownMenu] = useState(false);
   const [categoryMenu, setCategoryMenu] = useState(false);
+  const [email, setEmail] = useState("");
 
   const showDropdownMenu = () => setDropdownMenu((prevState) => !prevState);
   const showCategoryMenu = () => setCategoryMenu((prevState) => !prevState);
+
+  function handleEmail(e) {
+    e.preventDefault();
+    setEmail("");
+  }
 
   return (
     <div>
@@ -164,6 +171,7 @@ function BlogsPage() {
           </div>
           <Pagination />
         </div>
+
         <div
           id="side"
           onBlur={() => {
@@ -269,6 +277,24 @@ function BlogsPage() {
               </Link>
             </ul>
           </div>
+
+          <form id="subscribe-form">
+            <label htmlFor="email-id" id="mail-label">
+              <img src={mailSymb} alt="mail-symbol" />
+            </label>
+            <input
+              id="input-email-id-blogs"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              placeholder="Enter your email ID"
+              pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+"
+            />
+            <button type="submit" id="subscribe-btn" onClick={handleEmail}>
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
     </div>

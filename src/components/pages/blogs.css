@@ -46,24 +46,24 @@
   }
 }
 
-.icon {
+.bookmark-icon {
   height: 100%;
   width: auto;
   top: 0px;
   z-index: 11;
 }
 
-.icon:hover {
+.bookmark-icon:hover {
   transform: translateY(-15px);
   transition: 0.5s;
 }
 
-.icon:active {
+.bookmark-icon:active {
   transform: translateY(4px);
   transition: 0.5s;
 }
 
-.icon-inactive {
+.bookmark-icon-inactive {
   display: none;
 }
 
@@ -165,7 +165,8 @@
 }
 
 .content {
-  margin-top: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .content h1 {
@@ -189,7 +190,7 @@
 }
 
 .image {
-  max-width: 795px;
+  max-width: 760px;
   max-height: 292px;
   height: auto;
   width: auto;
@@ -238,12 +239,15 @@
 }
 
 #side {
+  /* position: fixed;
+  right: 0; */
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 22px;
   line-height: 33px;
   color: #000000;
+  width: 35%;
 }
 
 #side ol {
@@ -370,6 +374,22 @@
   transition: 0.5s;
 }
 
+#subs {
+  z-index: 1;
+}
+
+.btn {
+  padding: 0.5rem 3rem;
+  background-color: #ffae00;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all ease 0.25s;
+}
+
 #category-head {
   margin-bottom: 6px;
   font-weight: bolder;
@@ -418,7 +438,7 @@
 }
 
 #sort-direction {
-  scale: 0.7;
+  scale: 0.6;
   position: absolute;
   left: 85%;
   top: 120px;
@@ -433,6 +453,9 @@
   }
   .icon {
     height: 35px;
+  }
+  .body {
+    margin-left: 6%;
   }
 }
 
@@ -577,7 +600,7 @@
     font-size: 13px;
     right: 10%;
   }
-  .icon {
+  .bookmark-icon {
     position: relative;
     width: 28px;
     height: 35px;
@@ -594,7 +617,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .icon {
+  .bookmark-icon {
     left: 300%;
     height: 38px;
   }
@@ -618,4 +641,48 @@
     margin: 0;
     align-self: center;
   }
+}
+
+#subscribe-form {
+  position: absolute;
+  z-index: 1;
+  top: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+#mail-label {
+  position: absolute;
+  left: 13%;
+  top: 30px;
+  top: 0.875rem;
+}
+
+#input-email-id-blogs {
+  width: 90%;
+  margin-bottom: 2rem;
+  border: 2px solid #7b7b7b;
+  font-size: 1.125rem;
+  border-radius: 7px;
+  padding: 1rem 0rem 1rem 4rem;
+  outline: none;
+}
+
+#subscribe-btn {
+  padding: 0.5rem 3rem;
+  background-color: #ffae00;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all ease 0.25s;
+}
+
+#subscribe-btn:hover {
+  color: #777;
 }

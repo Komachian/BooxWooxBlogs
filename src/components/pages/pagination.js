@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import "./blogs.css";
 import icon from "../images/bookmark.svg";
 import authorPic from "../images/img-2.jpg";
 import pic from "../images/img-1.jpg";
+import dateFormatter from "../Global/dateFormatter";
 
 function Blog(blog) {
   return (
@@ -13,7 +15,7 @@ function Blog(blog) {
         <img
           src={icon}
           alt="bookmark-icon"
-          className={blog.bookmarked ? "icon" : "icon-inactive"}
+          className={blog.bookmarked ? "bookmark-icon" : "bookmark-icon-inactive"}
         />
       </div>
       <div className="heading">
@@ -26,7 +28,7 @@ function Blog(blog) {
         <div id="likes">{blog.likes}</div>
       </div>
 
-      <div className="body">
+      <Link className="body" to={"/blog/" + blog.id} >
         <img src={pic} alt="blog-pic" className="image" />
 
         <div className="content">
@@ -45,7 +47,7 @@ function Blog(blog) {
             <i class="fa fa-clock-o"></i> {blog.time}
           </a>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
@@ -53,7 +55,7 @@ function Blog(blog) {
 const blogsPerPage = 10;
 let arrayForHoldingBlogs = [];
 
-const Blogs = ({ blogs, loading }) => {
+const Blogs = ({ blogs, loading, error }) => {
   if (loading) {
     return (
       <div id="load-ani">
@@ -62,8 +64,14 @@ const Blogs = ({ blogs, loading }) => {
         color="#FFBD06"
         height={100}
         width={100}
-        timeout={5000}
       />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div id="load-ani">
+        Oops! There seems to be an error.<br/>Please try again.
       </div>
     );
   }
@@ -72,14 +80,15 @@ const Blogs = ({ blogs, loading }) => {
   blogs.map((blog) =>
     blogHolder.push(
       <Blog
+        id={blog.id}
         user="silverduck204"
         authorPic="{blogs[i].authorPic}"
-        date="10 August, 2021"
+        date={dateFormatter(blog.Date)}
         likes="24"
         pic="{blogs[i].pic}"
-        heading={blog.title}
-        content={blog.body}
-        author="Xaviers"
+        heading={blog.Title}
+        content={blog.Description}
+        author={blog.Author}
         tags="Horror,timepass"
         time="2 min"
         bookmarked={true}
@@ -93,16 +102,14 @@ const Blogs = ({ blogs, loading }) => {
 function Pagination() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [blogsToShow, setBlogsToShow] = useState([]);
   const [next, setNext] = useState(0);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       setLoading(true);
-      const resp = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      ).catch(error => console.log("Error! " + error));
-      setBlogs(resp.data);
+      await axios.get("https://azz75mvkyi.execute-api.ap-south-1.amazonaws.com/Prod/readBlog").then(res => {console.log(res); setBlogs(res.data.data.Items)}).catch(error => {console.log("Error! " + error); setError(true)});
       setLoading(false);
     };
 
@@ -129,9 +136,9 @@ function Pagination() {
 
   return (
     <div>
-      <Blogs blogs={blogsToShow} loading={loading} />
+      <Blogs blogs={blogsToShow} loading={loading} error={error} />
       <div
-        id={next >= 100 || loading ? "load-inactive" : "load-up"}
+        id={next >= 11 || (loading || error) ? "load-inactive" : "load-up"}
         onClick={handleShowMoreBlogs}
       >
         <a id="load">Load more</a>

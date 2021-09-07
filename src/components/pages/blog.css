@@ -1,0 +1,389 @@
+:root {
+  background-color: #e5e5e5;
+}
+
+#page {
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar {
+  margin-left: 38px;
+  width: 10%;
+}
+
+@media screen and (max-width: 930px) {
+  #sidebar {
+    display: none;
+  }
+  #body {
+    width: 100%;
+  }
+  #image {
+    width: 100%;
+  }
+  #featured-image {
+    width: 100%;
+  }
+  #blog-body {
+    font-size: 4px;
+  }
+  #comments-box {
+    font-size: 4px;
+  }
+}
+
+#author-info {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  margin-bottom: 120px;
+}
+
+#like {
+  height: 21.78px;
+  width: 19px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#like :hover {
+  transform: scale(1.1);
+}
+
+#share {
+  height: 20px;
+  width: 19px;
+  cursor: pointer;
+}
+
+#share :hover {
+  transform: scale(1.1);
+}
+
+#profilepic {
+  width: 90px;
+  height: 90px;
+  left: 580px;
+  top: 120px;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 90px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+#profilepic :hover {
+  transform: scale(1.1);
+}
+
+#username-blog {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+#badge-info {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+
+  /* identical to box height */
+
+  color: #828282;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#author {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 26px;
+  color: #000000;
+  width: fit-content;
+}
+
+#author-username {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 28px;
+  color: #000000;
+  margin-top: 13.5px;
+}
+
+#author-bio {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #5a5a5a;
+  margin-bottom: 10px;
+}
+
+#icons {
+  margin-top: 10px;
+}
+
+#body {
+  display: flex;
+  flex-direction: row;
+}
+
+#content {
+  width: 82%;
+  margin-left: 20px;
+}
+
+#head {
+  width: 98%;
+  margin-left: 40px;
+}
+
+#head-info {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+#title {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 46px;
+  letter-spacing: 0.03em;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+#time-date {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #828282;
+}
+
+#views {
+  right: 0;
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #828282;
+}
+
+#eye {
+  height: 16px;
+  width: 24px;
+  margin-right: 10px;
+}
+
+#image {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #828282;
+}
+
+#featured-image {
+  width: 98%;
+  height: auto;
+  border-radius: 8px;
+}
+
+#blog-body {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 21px;
+  line-height: 28px;
+  color: #000000;
+}
+
+#comments {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 34px;
+  color: #000000;
+}
+
+#comment-input {
+  padding: 10px 20px 10px 20px;
+  width: 90%;
+  height: 130px;
+  border-radius: 14px;
+  border: none;
+  resize: none;
+  overflow: scroll;
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#post-btn {
+  position: absolute;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-around;
+  width: 108px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: #ffae00;
+  justify-self: right;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#post-btn :hover {
+  color: #e5e5e5;
+  transition: 0.5s;
+}
+
+#post-btn :active {
+  transform: translateY(4px);
+}
+
+#post {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 34px;
+  color: #000000;
+}
+
+#replies {
+  display: flex;
+  flex-direction: row;
+  margin-top: 46px;
+}
+
+#userpic {
+  width: 59px;
+  height: 59px;
+  left: 250px;
+  top: 2405px;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 50px;
+  margin-right: 23px;
+  cursor: pointer;
+}
+
+#profile-name {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #7b7b7b;
+  margin-bottom: 20px;
+}
+
+#comment {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #414141;
+  margin-bottom: 30px;
+}
+
+#reply-dropdown {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #525252;
+  margin-bottom: 23px;
+  cursor: pointer;
+}
+
+#chevron-down svg {
+  position: relative;
+  display: inline;
+  height: 20px;
+}
+
+#chevron-up svg {
+  position: relative;
+  display: inline;
+  height: 20px;
+  transform: rotate(180deg);
+}
+
+#reply-btn {
+  font-family: PT Serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #7b7b7b;
+  margin-bottom: 28px;
+  cursor: pointer;
+}
+
+#reply-username {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #7b7b7b;
+  margin-right: 21px;
+}
+
+#reply {
+  font-family: PT Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 30px;
+  color: #414141;
+}
+
+#reply-box {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}

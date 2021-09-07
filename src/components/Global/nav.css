@@ -9,7 +9,7 @@
 .nav-container {
   position: sticky;
   top: 0;
-  z-index: 11;
+  z-index: 15;
 }
 
 .navbar {
@@ -25,6 +25,9 @@
 }
 
 .nav-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: absolute;
   right: 0px;
   margin-right: 10px;
@@ -56,7 +59,7 @@
   top: 0;
   text-align: center;
   z-index: 11;
-  height: 180px;
+  height: fit-content;
 }
 
 .side-menu-item {
@@ -137,6 +140,118 @@
   transition: 0.5s;
 }
 
+#user-side {
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#user-side:hover {
+  transform: scale(1.06);
+}
+
+#username-side {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #313131;
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 50px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+#chevron-down-username {
+  height: 10px;
+  margin-left: 10px;
+}
+
+#chevron-up-username {
+  transform: rotate(180deg);
+  height: 10px;
+  margin-left: 10px;
+}
+
+#side-user {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-menu-side {
+  top: 60px;
+  right: 10px;
+  display: flex;
+  transform: translateY(20px);
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #FFFFFF;
+  border-radius: 7px;
+  height: 170px;
+  width: 164px;
+}
+
+#user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #313131;
+  font-family: Poppins;
+  font-size: 20px;
+  line-height: 50px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#prof-pic {
+  height: 30px;
+  width: 30px;
+  border: 2px dotted #ffae00;
+  border-radius: 30px;
+  margin-right: 6px;
+}
+
+#user:hover {
+  color: #ffae00;
+  transition: 0.5s;
+}
+
+#user-menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  display: flex;
+  transform: translateY(20px);
+  flex-direction: column;
+  justify-content: space-evenly;
+  background: #FFFFFF;
+  border-radius: 7px;
+  height: 170px;
+  width: 164px;
+}
+
+#user-menu-inactive {
+  display: none;
+}
+
+.user-menu-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.user-menu-item:hover {
+  transform: scale(1.07);
+}
+
+.icon {
+  margin-right: 10px;
+}
+
 #log-side {
   background-color: #ffae00;
   color: #000000;
@@ -144,9 +259,9 @@
   border-radius: 30.5px;
   padding-left: 35px;
   padding-right: 35px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  line-height: 55px;
+  /* padding-top: 8px;
+  padding-bottom: 8px; */
+  line-height: 40px;
   margin-left: -6px;
 }
 
@@ -159,3 +274,4 @@
   color: #000000;
   font-weight: 600;
 }
+

@@ -31,14 +31,14 @@ export default function Footer() {
               <FacebookLogo />
             </a>
             <a
-              href='https://www.instagram.com/'
+              href='https://www.linkedin.com/'
               target='_blank'
               rel='noreferrer'
             >
               <LinkedinLogo />
             </a>
             <a
-              href='https://www.linkedin.com/'
+              href='https://www.instagram.com/'
               target='_blank'
               rel='noreferrer'
             >
@@ -76,7 +76,7 @@ export default function Footer() {
                     rel='noreferrer'
                     className='footer__upper__reach-us__links'
                   >
-                    16-B, Lavkush Soceity, Behind Medlink Hospital Satellite,
+                    16-B, Lavkush Society, Behind Medlink Hospital Satellite,
                     Ahmedabad-380015
                   </a>
                 </div>
