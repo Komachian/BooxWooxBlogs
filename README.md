@@ -6,6 +6,7 @@
 - **Blogs liking/unliking functionality**
 - **`My Account` needs to be made functional**
 - **`My Blogs` needs to be made functional**
+- **`Saved Blogs` needs to be added and made functional**
 - **SMS OTP functionality needs to be replaced with Email OTP**
 - Blog commenting functionality
 - Bookmarking functionality
