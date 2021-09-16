@@ -1,18 +1,23 @@
 # BooxWoox Blogs
 
 ## To-do
-- make create-blog a private route
-- contexts for user
+- **Carousel image fetching from API**
+- **Blog read duration needs to be fetched/calculated**
+- **Blogs liking/unliking functionality**
+- **`My Account` needs to be made functional**
+- **`My Blogs` needs to be made functional**
+- **SMS OTP functionality needs to be replaced with Email OTP**
+- Blog commenting functionality
+- Bookmarking functionality
+- Google Analytics needs to be implemented
 
 ## Issues
 - Overlay has issues while scrolling on Firefox
-- Login API returns CORS error
 - Set interval not terminating
 - Dial-codes list scroll needs improvement
 - Side menu of blogs page not fixed
 - Overlay onBlur() not working as expected
 - Character inputs are not rejected in phone-number / OTP box
-- **Duplicate blogs are displayed in Blogs list**
 
 ## Updates
 - 6 September, 2021

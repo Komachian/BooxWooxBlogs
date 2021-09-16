@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDom from "react-dom";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import useEventListener from '../../hooks/useEventListener'
 import "./loginModal.css";
 import { useUser } from "../Contexts/UserContext";
 
@@ -146,6 +147,20 @@ function LoginModal({ showOverlay, setShowOverlay }) {
     }
   }
 
+  const overlayRef = useRef()
+
+  useEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && showOverlay) {
+      setShowOverlay(false)
+    }
+  })
+
+  useEventListener('mousedown', (e) => {
+    if (e.target === overlayRef.current && showOverlay) {
+      setShowOverlay(false)
+    }
+  })
+
   function clearOTP() {
     dig1.current.value = null;
     dig2.current.value = null;
@@ -238,7 +253,7 @@ function LoginModal({ showOverlay, setShowOverlay }) {
   if (!showOverlay) return null;
   return (
     <div>
-      <div id="overlay" onBlur={() => setShowOverlay(false)} tabIndex="1"></div>
+      <div id="overlay" ref={overlayRef} onBlur={() => setShowOverlay(false)} tabIndex="1"></div>
       <div
         className="overlay-box"
         id={showLogin && showOverlay ? "log-sign-box" : "log-sign-box-inactive"}
